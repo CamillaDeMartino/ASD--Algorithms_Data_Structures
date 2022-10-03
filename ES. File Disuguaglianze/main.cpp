@@ -38,7 +38,6 @@ void Tester::check()
             fsE << "corretto"<< "\n";
         else
             fsE << "falso"<<"\n";
-            int ciao;
     }
 
     fsE.close();
