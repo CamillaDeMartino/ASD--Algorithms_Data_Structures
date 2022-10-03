@@ -33,10 +33,16 @@ Lista::Lista()
     coda = nullptr;
 }
 
-/*Lista::~Lista()
+Lista::~Lista()
 {
 
-}*/
+    while(testa != nullptr )
+    {
+        Nodo *temp = testa;
+        testa = testa->getNext();
+        delete temp;
+    }
+}
 
 bool Lista::isVuota()
 {
