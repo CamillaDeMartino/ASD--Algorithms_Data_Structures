@@ -54,7 +54,7 @@ template <class T> void Lista<T>::Inserimento( T *bt)
     }
     else
     {
-        testa = coda = nullptr;
+        testa = coda = newNodo;
     }
 }
 #endif
