@@ -12,7 +12,7 @@ private:
     Nodo<T> *coda;
 public:
     Lista();
-    //~Lista();
+    ~Lista();
 
     void Inserimento(T *);
 
@@ -28,11 +28,18 @@ template <class T> Lista<T> :: Lista()
     coda= nullptr;
 }
 
-/*
+
 template <class T> Lista<T>:: ~Lista()
 {
 
-}*/
+    while(testa != nullptr)
+    {
+        Nodo<T> *temp = testa;
+        testa = testa->getNext();
+        delete temp;
+    }
+
+}
 
 template <class T> bool Lista<T>::isVuota()
 {
