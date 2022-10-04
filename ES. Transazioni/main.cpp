@@ -17,7 +17,7 @@ int main(){
 
     Transazione a("Patata", "carciofi", 2);
 
-    a.getTransazione();
+    a.printTransazione();
 
     return 0;
 }

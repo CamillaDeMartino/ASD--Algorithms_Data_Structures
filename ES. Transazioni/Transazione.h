@@ -24,7 +24,7 @@ public:
     string getTo(){return TO;}
     int getQt(){return QT;}
 
-    void getTransazione();
+    void printTransazione();
 };
 
 Transazione::Transazione(string F, string T, int Q)
@@ -56,7 +56,7 @@ void Transazione::setQt(int Q)
 }
 
 
-void Transazione::getTransazione()
+void Transazione::printTransazione()
 {
     cout<<"FROM: "<< FROM << " TO: "<< TO << " QT: "<< QT <<endl;
 }
