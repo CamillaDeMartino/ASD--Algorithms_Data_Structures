@@ -56,7 +56,7 @@ void Blocco::insTrans()
 int Blocco::getBloccoT(string indirizzo )
 {
     Nodo<Transazione> *temp = listTrans->getTesta();
-    int sum = 0;
+    int tot = 0;
 
     while(temp != nullptr)
     {
@@ -65,14 +65,18 @@ int Blocco::getBloccoT(string indirizzo )
             //cout<<"From: "<< temp->getInfo()->getFrom()<<endl;
 
             temp->getInfo()->printTransazione();
-            sum -= temp->getInfo()->getQt();
+            tot -= temp->getInfo()->getQt();
         }
         else if(indirizzo == temp->getInfo()->getTo())
         {
             temp->getInfo()->printTransazione();
-            sum += temp->getInfo()->getQt();
+            tot += temp->getInfo()->getQt();
         }
+
+        temp = temp->getNext();
     }
+
+    return tot;
 }
 
 #endif
