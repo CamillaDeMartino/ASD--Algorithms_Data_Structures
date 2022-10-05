@@ -10,6 +10,8 @@ class Lista
 private:
     Nodo<T> *testa;
     Nodo<T> *coda;
+
+    bool isVuota();
 public:
     Lista();
     ~Lista();
@@ -18,14 +20,12 @@ public:
 
     Nodo<T> *getTesta(){return testa;}
     Nodo<T> *getcoda(){return coda;}
-
-    bool isVuota();
 };
 
 template <class T> Lista<T> :: Lista()
 {
     testa = nullptr;
-    coda= nullptr;
+    coda = nullptr;
 }
 
 

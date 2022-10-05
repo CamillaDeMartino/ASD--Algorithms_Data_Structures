@@ -13,6 +13,8 @@ private:
     Nodo *testa;
     Nodo *coda;
 
+    bool isVuota();
+    
 public:
     Lista();
     ~Lista();
@@ -23,7 +25,6 @@ public:
     Nodo *getTesta(){return testa;}
     Nodo *getcoda(){return coda;}
 
-    bool isVuota();
     void sum();
 };
 

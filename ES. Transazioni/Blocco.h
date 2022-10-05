@@ -1,6 +1,7 @@
 #ifndef BLOCCO_H
 #define BLOCCO_H
 #include <iostream>
+#include <string>
 #include "Lista.h"
 #include "Transazione.h"
 
@@ -8,22 +9,21 @@ using namespace std;
 
 class Blocco
 {
-private:
+private:  
+    int id;
     Lista<Transazione> *listTrans;
 public:
-    Blocco( Lista<Transazione> *);
+    Blocco(Lista<Transazione> *, int);
     //~Blocco();
 
-    void setListTrans(Lista<Transazione> *);
-    void setTrans();
-    void printBlocco();
-
-
-
+    void insTrans();
+    int getBloccoT(string );
+    int getId(){return id;}
 };
 
-Blocco::Blocco(Lista<Transazione> *ls)
+Blocco::Blocco(Lista<Transazione> *ls, int i)
 {
+    id = i;
     listTrans = ls;
 }
 
@@ -32,15 +32,47 @@ Blocco::Blocco(Lista<Transazione> *ls)
 }
 */
 
-void Blocco::setListTrans(Lista<Transazione> *ls)
+void Blocco::insTrans()
 {
-    listTrans = ls;
+    string FROM;
+    string TO;
+    int QT;
+
+    Transazione *temp = new Transazione(FROM, TO, QT);
+
+    cout<< "Inserisci From: "<<endl;
+    cin>>FROM;
+
+    cout<< "Inserisci To: "<<endl;
+    cin>>TO;
+
+    cout<< "Inserisci Qt: "<<endl;
+    cin>>QT;
+
+    listTrans->Inserimento(temp);
 }
 
-void Blocco::setTrans()
-{
-    
-}
 
+int Blocco::getBloccoT(string indirizzo )
+{
+    Nodo<Transazione> *temp = listTrans->getTesta();
+    int sum = 0;
+
+    while(temp != nullptr)
+    {
+        if(indirizzo == temp->getInfo()->getFrom())
+        {
+            //cout<<"From: "<< temp->getInfo()->getFrom()<<endl;
+
+            temp->getInfo()->printTransazione();
+            sum -= temp->getInfo()->getQt();
+        }
+        else if(indirizzo == temp->getInfo()->getTo())
+        {
+            temp->getInfo()->printTransazione();
+            sum += temp->getInfo()->getQt();
+        }
+    }
+}
 
 #endif
