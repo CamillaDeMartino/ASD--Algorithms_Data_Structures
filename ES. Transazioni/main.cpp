@@ -11,13 +11,47 @@ FROM, un indirizzo TO ed un valore intero QT.
 */
 
 #include <iostream>
+#include <string>
 #include "Transazione.h"
+#include "Lista.h"
+#include "Blocco.h"
+
+using namespace std;
 
 int main(){
 
-    Transazione a("Patata", "carciofi", 2);
+    string address;
+    int tot = 0; 
 
-    a.printTransazione();
+    Lista<Blocco> *blockchain = new Lista<Blocco>();
+    Blocco *blocco1 = new Blocco(1);
+    Blocco *blocco2 = new Blocco(2);
+    //Blocco *blocco3 = new Blocco(3);
 
+    blocco1->insTrans(2);
+    blocco2->insTrans(3);
+    //blocco3->insTrans();
+
+    blockchain->Inserimento(blocco1);
+    blockchain->Inserimento(blocco2);
+    //blockchain->Inserimento(blocco3);
+
+    Nodo<Blocco> *stamp = blockchain ->getTesta();
+
+    cout<<"Inserisci l'indirizzo: "<<endl;
+    cin>>address;
+
+    while( stamp != nullptr)
+    {
+        int balance = 0;
+        cout<<"Blocco n. "<< stamp->getInfo()->getId()<<endl;
+        balance += stamp->getInfo()->getBloccoT(address);
+
+        cout<<"Bilancio per questo blocco = " << balance << endl;
+
+        stamp = stamp ->getNext();
+    }
+
+    
     return 0;
 }

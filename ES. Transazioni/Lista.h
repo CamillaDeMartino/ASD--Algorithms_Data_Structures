@@ -31,7 +31,6 @@ template <class T> Lista<T> :: Lista()
 
 template <class T> Lista<T>:: ~Lista()
 {
-
     while(testa != nullptr)
     {
         Nodo<T> *temp = testa;
@@ -52,7 +51,7 @@ template <class T> bool Lista<T>::isVuota()
 
 template <class T> void Lista<T>::Inserimento( T *bt)
 {
-    Nodo<T> newNodo = new Nodo<T>(bt);
+    Nodo<T> *newNodo = new Nodo<T>(bt);
 
     if(!this->isVuota())
     {

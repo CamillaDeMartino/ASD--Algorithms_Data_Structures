@@ -13,18 +13,19 @@ private:
     int id;
     Lista<Transazione> *listTrans;
 public:
-    Blocco(Lista<Transazione> *, int);
+    Blocco(int);
     //~Blocco();
 
-    void insTrans();
+    void insTrans(int );
     int getBloccoT(string );
+
     int getId(){return id;}
 };
 
-Blocco::Blocco(Lista<Transazione> *ls, int i)
+Blocco::Blocco(int i)
 {
     id = i;
-    listTrans = ls;
+    listTrans = new Lista<Transazione>;
 }
 
 /* Blocco::~Blocco()
@@ -32,24 +33,31 @@ Blocco::Blocco(Lista<Transazione> *ls, int i)
 }
 */
 
-void Blocco::insTrans()
+void Blocco::insTrans(int ntrans)
 {
     string FROM;
     string TO;
     int QT;
 
+    for(int i = 1; i <= ntrans; i++)
+    {
+        cout<<"Inserisci la transazione n. "<< i << " per il blocco n. "<<getId()<<endl;
+
+        cout<< "Inserisci From: ";
+        cin>>FROM;
+        cout<<endl;
+
+        cout<< "Inserisci To: ";
+        cin>>TO;
+        cout<<endl;
+
+        cout<< "Inserisci Qt: ";
+        cin>>QT;
+        cout<<endl;
+
     Transazione *temp = new Transazione(FROM, TO, QT);
-
-    cout<< "Inserisci From: "<<endl;
-    cin>>FROM;
-
-    cout<< "Inserisci To: "<<endl;
-    cin>>TO;
-
-    cout<< "Inserisci Qt: "<<endl;
-    cin>>QT;
-
     listTrans->Inserimento(temp);
+    }
 }
 
 
@@ -62,8 +70,6 @@ int Blocco::getBloccoT(string indirizzo )
     {
         if(indirizzo == temp->getInfo()->getFrom())
         {
-            //cout<<"From: "<< temp->getInfo()->getFrom()<<endl;
-
             temp->getInfo()->printTransazione();
             tot -= temp->getInfo()->getQt();
         }
