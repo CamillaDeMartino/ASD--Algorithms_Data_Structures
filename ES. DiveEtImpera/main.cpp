@@ -18,7 +18,7 @@ int Ricerca(int A[], int low, int high)
 {
     int mid, ind;
 
-    if((high + 1) - low == 1)
+    if((high+1) - low == 1)
     {
         if (A[low] < A[high])
             return low;
@@ -60,8 +60,6 @@ int main(){
     else 
         cout<<endl<<"Indice: "<< i <<endl<< A[i] << " < "<< A[i+1]<<endl<<endl;
 
-
-    //cout<< Ricerca(A, 0, 5) <<endl<<endl;
     return 0;
 }
 
