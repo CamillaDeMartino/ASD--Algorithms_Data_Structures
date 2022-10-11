@@ -10,7 +10,6 @@
 */
 
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -40,15 +39,6 @@ int Ricerca(int A[], int low, int high)
 }
 
 int main(){
-
-    /*vector<int> A;
-    int elem;
-
-    cout<<"Inserire un elemento: ";
-    cin>>elem;
-    cout<<endl;
-
-    A.push_back(elem);*/
 
     int A[] = {20, 15, 13, 12, 21};
     int i;
