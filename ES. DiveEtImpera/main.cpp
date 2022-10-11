@@ -18,7 +18,7 @@ int Ricerca(int A[], int low, int high)
 {
     int mid, ind;
 
-    if(high - low == 1)
+    if((high + 1) - low == 1)
     {
         if (A[low] < A[high])
             return low;
@@ -52,7 +52,6 @@ int main(){
 
     int A[] = {20, 15, 13, 12, 21};
     int i;
-    
 
     i = Ricerca(A, 0, 4);
 
