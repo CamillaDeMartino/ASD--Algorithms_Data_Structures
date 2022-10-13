@@ -1,3 +1,7 @@
+/*
+    Progettare un algoritmo ricorsivo per contare il numero id scambi necessari per ordinare un'array
+*/
+
 #include <iostream>
 
 using namespace std;
