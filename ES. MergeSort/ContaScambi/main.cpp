@@ -46,7 +46,7 @@ void mergesort(Item a[], int left, int right)
     if(left < right)
     {
         int center = (left+right)/2;
-        mergesort(a,left, center);
+        mergesort(a,left, center);  
         mergesort(a,center+1, right);
         merge(a,left,center,right);
     }
