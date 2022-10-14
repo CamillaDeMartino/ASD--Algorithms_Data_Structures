@@ -18,24 +18,13 @@ int Ricerca(int A[], int low, int high)
     int mid, ind;
 
     if((high+1) - low == 1)
-    {
-        if (A[low] < A[high])
-            return low;
-        else
-            return -1;
-    }
+        return low;
+    
+    mid = (high+low)/2;
+    if(A[low] < A[mid+1])
+        return Ricerca(A,low,mid);
     else 
-    {
-        mid = (high+low)/2;
-        if(A[mid] < A[mid+1])
-            return mid;
-        else 
-            ind = Ricerca(A,low,mid);
-            if(ind < 0)
-                return Ricerca(A, mid+1, high);
-            else 
-                return ind;
-    }
+        return Ricerca(A, mid+1, high);
 }
 
 int main(){
