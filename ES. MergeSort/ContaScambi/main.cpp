@@ -3,35 +3,16 @@
 */
 
 #include <iostream>
-
 using namespace std;
 
 typedef int Item;
 int count = 0;
 
 
-int conta_scambi(Item a[], int j)
-{
-    int prec = j-1;
-
-    while(a[j+1] < a[prec])
-    {
-        swap(a[j], a[prec]);
-        count++;
-        prec--;
-        j--;
-    }
-
-
-    return count;
-}
-
 void merge(Item a[], int left, int center, int right)
 {
     const int n = 4;
     static Item aux[n];
-
-
     int i,j;
 
 
@@ -43,18 +24,19 @@ void merge(Item a[], int left, int center, int right)
 
 
     
-    //conto quanti possibili scambi devono essere effettuati per ordinare l'array 
-    //ma senza ordinarlo perché non è richiesto
-    if(aux[j] < aux[i])
-    {           
-        count = conta_scambi(aux,j);
-        i++;
-    }
-    else 
+    for (int k = left; k <= right; k++)
     {
-        j--;
+        if (aux[j] < aux[i])
+        {
+            a[k] = aux[j--];
+            count += center+1 - i;
+        }
+        else
+        {
+            a[k] = aux[i++];
+        }
     }
- 
+    
    
 }
 
@@ -75,7 +57,6 @@ int main(){
 
     int a[n] = {9,7,3,1};
 
-    
     for(int k = 0; k < n; k++)
     {
       cout <<" [" << a[k] << "]";
@@ -83,6 +64,11 @@ int main(){
     cout<<endl;
 
     mergesort(a,0,n-1);
+
+    for(int k = 0; k < n; k++)
+    {
+      cout <<" [" << a[k] << "]";
+    }
     cout<<endl<< " n. scambi tot  = " << count << " ";
 
     return 0;
