@@ -13,31 +13,34 @@ template<class Item>
 class Algoritmi
 {
 private:
-    static void merge(vector<Item>, typename vector<Item>::iterator); 
+    static void merge(typename vector<Item>::iterator, typename vector<Item>::iterator, typename vector<Item>::iterator); 
 public:
-    static void mergeSort(vector<Item>, typename vector<Item>::iterator, typename vector<Item>::iterator );
+    static void mergeSort(typename vector<Item>::iterator, typename vector<Item>::iterator );
 };
 
 
-template<class Item> void Algoritmi<Item>::merge(vector<Item> A, typename vector<Item>::iterator mid){
+template<class Item> void Algoritmi<Item>::merge(typename vector<Item>::iterator begin, typename vector<Item>::iterator mid, typename vector<Item>::iterator end){
 
-    
+    auto size = end - begin;
     typename vector<Item>::iterator i;
     typename vector<Item>::iterator j;
     typename vector<Item>::iterator k;
-    vector<Item> aux(A.size());
+    vector<Item> aux(size);
     
-    //utilizzo center come indice di aux 
-    int center = A.size()/2;
-    for(i = mid-1; i != A.begin()-1; i--)
+    //utilizzo center come indice di aux poiché gli iteratori punteranno all'elemento stesso
+    //non alla posizione
+    //size/2 - 1 perché in caso di numeri di dispari si approssima per difetto
+    int center = (size/2) -1 ;
+
+    for(i = mid-1; i != begin-1; i--)
     {
-        aux.at(center-1) = *i;
+        aux.at(center) = *i;
         center--; 
     }
 
     //center è giunto alla fine, poiché la seconda parte dell'array deve essere riempita al contraio lo riporto alla fine
-    center = A.size();
-    for(j = mid; j != A.end(); j++)
+    center = size;
+    for(j = mid; j != end; j++)
     {   
         aux.at(center-1) = *j;
         center--;
@@ -50,7 +53,7 @@ template<class Item> void Algoritmi<Item>::merge(vector<Item> A, typename vector
 
 
     
-    for(k = A.begin(); k != A.end(); k++){
+    for(k = begin; k != end; k++){
         if(*j < *i)
         {
             *k = *j;
@@ -66,20 +69,20 @@ template<class Item> void Algoritmi<Item>::merge(vector<Item> A, typename vector
 }
 
 
-template<class Item> void Algoritmi<Item> :: mergeSort(vector<Item> A, typename vector<Item>::iterator begin, typename vector<Item>::iterator end)
+template<class Item> void Algoritmi<Item> :: mergeSort(typename vector<Item>::iterator begin, typename vector<Item>::iterator end)
 {
-    
-    if(A.size() > 1)
-    {
-        
-        int center = (A.size())/2;
-        auto a = A.begin();
-        advance(a,center);
+    //non posso passare come parametro l'array intero perché non si aggiorna
+    //si preferisce dunque lavorare unicamente con gli itreratori
+    auto size = end-begin;
+   
+    if(size >= 2)
+    {   
+        auto mid = begin;
+        advance(mid,size/2);
 
-
-        mergeSort(A, begin, a-1); 
-        mergeSort(A, a, end);
-        merge(A, a);
+        mergeSort(begin, mid); 
+        mergeSort(mid, end);
+        merge(begin,mid,end);
     }
 }
 
