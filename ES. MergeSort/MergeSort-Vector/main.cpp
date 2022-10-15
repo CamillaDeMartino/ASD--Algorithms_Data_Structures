@@ -19,7 +19,7 @@ int main(){
     {
         cout<<"["<< *it <<"]";
     }
-    cout<<endl<<endl;
+    cout<<endl<<endl;  
 
     Algoritmi<int> :: mergeSort(A, A.begin(), A.end());
 
