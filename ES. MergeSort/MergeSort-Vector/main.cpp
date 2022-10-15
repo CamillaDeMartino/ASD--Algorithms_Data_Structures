@@ -16,12 +16,18 @@ int main(){
 
     cout<<endl;
     for(it = A.begin(); it != A.end(); it++)
+    for(it = A.begin(); it != A.end(); it++)
     {
         cout<<"["<< *it <<"]";
     }
     cout<<endl<<endl;  
 
+
+
     Algoritmi<int> :: mergeSort(A, A.begin(), A.end());
+
+
+
 
     cout<<endl<<"Dopo merge"<<endl;
     for(it = A.begin(); it != A.end(); it++)

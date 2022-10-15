@@ -4,11 +4,15 @@ using namespace std;
 
 int main(){
 
+
     vector<int> A = {7,9,1,3};
     typename vector<int>::iterator i;
     typename vector<int>::iterator j;
     typename vector<int>::iterator k;
     vector<int> aux(A.size());
+
+    cout<<A.end()-A.begin();
+
 
     int center = A.size()/2;
     auto mid = A.begin();
@@ -69,7 +73,7 @@ int main(){
             *k = *i;
             i++;
         }
-        cout << *k;
+        cout << *k<< " ";
     }
 
 

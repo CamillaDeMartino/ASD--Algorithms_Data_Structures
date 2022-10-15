@@ -8,7 +8,6 @@
 #include <vector>
 
 using namespace std;
-
 template<class Item>
 
 class Algoritmi
@@ -22,46 +21,33 @@ public:
 
 template<class Item> void Algoritmi<Item>::merge(vector<Item> A, typename vector<Item>::iterator mid){
 
+    
     typename vector<Item>::iterator i;
     typename vector<Item>::iterator j;
     typename vector<Item>::iterator k;
     vector<Item> aux(A.size());
-
+    
+    //utilizzo center come indice di aux 
     int center = A.size()/2;
-
     for(i = mid-1; i != A.begin()-1; i--)
     {
-        cout<<"i: "<< *i;
-        cout<<"center: "<<center<<endl;
         aux.at(center-1) = *i;
         center--; 
     }
-    i = aux.begin();
 
-     for (auto& v : aux){
-        cout << v << " ";
-    }
-    cout << endl;
-
+    //center è giunto alla fine, poiché la seconda parte dell'array deve essere riempita al contraio lo riporto alla fine
     center = A.size();
     for(j = mid; j != A.end(); j++)
     {   
-        cout<<"j= "<<*j;
-        cout<<"center: "<<center<<endl;
         aux.at(center-1) = *j;
         center--;
     }
+
+    //riposoziono gli indici 
+    //i all'inzio dell'array creato e j alla fine
+    i = aux.begin();
     j = aux.end() - 1;
 
-
-    for (auto& v : aux){
-    cout << v << " ";
-    }
-    cout << endl;
-    cout << endl;
-    
-    cout<<"j: " << *j << " "<<endl;
-    cout <<"i: "<< *i << " "<<endl;
 
     
     for(k = A.begin(); k != A.end(); k++){
@@ -73,7 +59,7 @@ template<class Item> void Algoritmi<Item>::merge(vector<Item> A, typename vector
         else
         {
             *k = *i;
-            i++;
+             i++;
         }
     }
  
@@ -82,23 +68,16 @@ template<class Item> void Algoritmi<Item>::merge(vector<Item> A, typename vector
 
 template<class Item> void Algoritmi<Item> :: mergeSort(vector<Item> A, typename vector<Item>::iterator begin, typename vector<Item>::iterator end)
 {
-    int center = (A.size())/2;
-
     
-    if(A.size()>1)
+    if(A.size() > 1)
     {
+        
+        int center = (A.size())/2;
         auto a = A.begin();
         advance(a,center);
 
-   
-      /* vector<Item> Sx;
-        vector<Item> Dx;
 
-        Sx.assign(A.begin(), a);
-        Dx.assign(a, A.end());
-      */
-
-        mergeSort(A, begin, a);  
+        mergeSort(A, begin, a-1); 
         mergeSort(A, a, end);
         merge(A, a);
     }
