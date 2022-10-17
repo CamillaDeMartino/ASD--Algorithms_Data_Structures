@@ -27,7 +27,7 @@ template<class Item> void Algoritmi<Item>::merge(typename vector<Item>::iterator
     typename vector<Item>::iterator k;
     vector<Item> aux(size);
     
-    //utilizzo center come indice di aux poiché gli iteratori punteranno all'elemento stesso
+    //utilizzo center come indice di dell'array ausiliare poiché gli iteratori punteranno all'elemento stesso
     //non alla posizione
     //size/2 - 1 perché in caso di numeri di dispari si approssima per difetto
     int center = (size/2) -1 ;
@@ -50,8 +50,6 @@ template<class Item> void Algoritmi<Item>::merge(typename vector<Item>::iterator
     //i all'inzio dell'array creato e j alla fine
     i = aux.begin();
     j = aux.end() - 1;
-
-
     
     for(k = begin; k != end; k++){
         if(*j < *i)

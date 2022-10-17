@@ -8,11 +8,11 @@
 #include "MergeSort.h"
 
 using namespace std;
-//template <typename Item>
+
 
 int main(){
     vector<int> A = {9,7,3,1};
-    typename vector<int>::iterator it;
+    //typename vector<int>::iterator it;
 
     Algoritmi<int> :: mergeSort(A.begin(), A.end());
 
