@@ -70,7 +70,7 @@ template<class Item> void Algoritmi<Item>::merge(typename vector<Item>::iterator
 template<class Item> void Algoritmi<Item> :: mergeSort(typename vector<Item>::iterator begin, typename vector<Item>::iterator end)
 {
     //non posso passare come parametro l'array intero perché non si aggiorna
-    //si preferisce dunque lavorare unicamente con gli itreratori
+    //si preferisce dunque lavorare unicamente con gli iteratori
     auto size = end-begin;
    
     if(size >= 2)

@@ -12,7 +12,7 @@ using namespace std;
 
 int main(){
     vector<int> A = {9,7,3,1};
-    //typename vector<int>::iterator it;
+    //typename vector<int>::iterator it = A;
 
     Algoritmi<int> :: mergeSort(A.begin(), A.end());
 
