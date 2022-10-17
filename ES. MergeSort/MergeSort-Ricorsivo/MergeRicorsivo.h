@@ -61,9 +61,6 @@ template <class Item> void MergeRicorsivo <Item>::merge(Item *C, Item *A, int N,
         C[0] = A[0];
         merge(C+1, A+1, N-1, B,M);
     }
-
-
-   
 }
 
 #endif
