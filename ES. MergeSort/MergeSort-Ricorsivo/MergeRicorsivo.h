@@ -38,6 +38,7 @@ template <class Item> void MergeRicorsivo<Item> ::mergeSort(Item A[], int left, 
 
 template <class Item> void MergeRicorsivo <Item>::merge(Item *C, Item *A, int N, Item *B, int M)
 {
+    
     if(N > 0 && M > 0)
     {
         if(A[0] < B[0])
