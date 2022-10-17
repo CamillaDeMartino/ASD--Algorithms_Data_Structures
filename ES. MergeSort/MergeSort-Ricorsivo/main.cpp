@@ -11,14 +11,13 @@ using namespace std;
 
 int main(){
 
-    int A[5] = {9,7,3,1,4};
+    int A[6] = {4,3,1,2,20,11};
     
-    MergeRicorsivo<int>::mergeSort(A, 0, 4);
+    MergeRicorsivo<int>::mergeSort(A, 0, 5);
 
-    //Stampa in output il vettore ordinato
-    for(int idx = 0; idx < 4; idx++)
-        cout<<"Elemento[" << idx << "] = "<<A[idx]<<endl;
-    
-    
+    for(auto i : A)
+        cout<<i<<" ";
+
+
     return 0;
 }
