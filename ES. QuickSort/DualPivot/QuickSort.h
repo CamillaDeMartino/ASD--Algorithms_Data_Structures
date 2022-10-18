@@ -55,7 +55,8 @@ template<class Item> int QuickSort<Item>::partition(Item *A, int low, int high, 
         //lo scopo è di far in modo che il nostro k faccia si che alla sua destra si trovano numeri più grandi 
         //e alla sua sinistra i più piccoli
 
-        // sei gli elementi sono più piccoli del pivot di sinistra, scambia 
+        // sei gli elementi sono più piccoli del pivot di sinistra, scambia
+        //i viene incrementato in modo da incrementare la porzione con i numeri più piccoli
         // N.B i pivot non sono scambiati se non all'inizio prima di entrare nel while
         if(A[k] < lpivot){
             swapp(&A[k], &A[i]);
