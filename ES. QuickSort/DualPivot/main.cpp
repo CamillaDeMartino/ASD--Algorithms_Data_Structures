@@ -24,7 +24,7 @@ int main(){
 
     std::cout<<std::endl;
 
-    QuickSort::quickSort(A,0,5);
+    QuickSort<int>::quickSort(A,0,5);
 
     for(auto i : A)
         std::cout<<i<<" ";
