@@ -52,7 +52,7 @@ template<class Item> int QuickSort<Item>::partition(Item *A, int low, int high, 
     Item rpivot = A[high];
 
     while(k <= j){
-        //lo scopo è di far in modo che il jostro k contenga sempre elementi compresi tra il pivot di sinistra e quello di destra
+        //lo scopo è di far in modo che il nostro k contenga sempre elementi compresi tra il pivot di sinistra e quello di destra
 
         // sei gli elementi sono più piccoli del pivot di sinistra, scambia 
         // N.B i pivot non sono scambiati se non all'inizio prima di entrare nel while

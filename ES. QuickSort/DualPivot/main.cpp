@@ -17,7 +17,7 @@
 
 int main(){
 
-    int A[] = {4,3,1,2,20,11};
+    int A[] = {4,3,1,7,20,11};
 
     for(auto i : A)
         std::cout<<i<<" ";
