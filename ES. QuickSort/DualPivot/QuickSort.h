@@ -40,7 +40,7 @@ template<class Item> int QuickSort<Item>::partition(Item *A, int low, int high, 
     if(A[low] > A[high])
         swapp(&A[low], &A[high]);
 
-    //i indicherà l'ultimo elemento della prima parte(quella a sinistra)
+    //i indicherà l'ultimo elemento della prima parte(quella a sinistra), con i numeri più piccoli
     //k si muove insieme ad i e ci permette di scorrere tutti gli elemnti non presi in esame
     //j verrà usato per realizzare la parte di destra
     auto i = low + 1;
@@ -52,7 +52,8 @@ template<class Item> int QuickSort<Item>::partition(Item *A, int low, int high, 
     Item rpivot = A[high];
 
     while(k <= j){
-        //lo scopo è di far in modo che il nostro k contenga sempre elementi compresi tra il pivot di sinistra e quello di destra
+        //lo scopo è di far in modo che il nostro k faccia si che alla sua destra si trovano numeri più grandi 
+        //e alla sua sinistra i più piccoli
 
         // sei gli elementi sono più piccoli del pivot di sinistra, scambia 
         // N.B i pivot non sono scambiati se non all'inizio prima di entrare nel while
