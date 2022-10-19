@@ -17,14 +17,14 @@
 
 int main(){
 
-    int A[] = {4,3,1,7,20,11};
+    int A[] = {2,7,8,2};
 
     for(auto i : A)
         std::cout<<i<<" ";
 
     std::cout<<std::endl;
 
-    QuickSort<int>::quickSort(A,0,5);
+    QuickSort<int>::quickSort(A,0,4);
 
     for(auto i : A)
         std::cout<<i<<" ";
