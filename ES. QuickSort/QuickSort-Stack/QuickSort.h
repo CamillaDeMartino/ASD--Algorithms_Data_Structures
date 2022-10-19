@@ -25,13 +25,14 @@ template<class Item> void QuickSort<Item>::quickSort_iter(Item A[], int l, int r
 {
     Stack<Item> Sti;
 
-    Sti.Push(l);
     Sti.Push(r);
+    Sti.Push(l);
 
     //finché ci sono elementi nello stack
+    //LIFO
     while(!Sti.isEmpty()){
-        Sti.Pop(r);
         Sti.Pop(l);
+        Sti.Pop(r);
 
         int i = partition(A,l,r);
 
