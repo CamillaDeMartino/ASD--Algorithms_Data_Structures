@@ -113,7 +113,7 @@ template<class T> void MaxHeap<T>::insert(T nodo)
 template<class T> void MaxHeap<T>::printArray()
 {
     cout<<endl << "**Albero***" << endl;
-    for (int i = 0; i <getHeapSize(); i++)
+    for (int i = 0; i <getHeapSize()-1; i++)
         cout<<getTree().at(i)<<" ";
 
     cout<<endl<<endl;
