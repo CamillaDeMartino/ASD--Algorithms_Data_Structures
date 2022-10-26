@@ -77,10 +77,9 @@ template<class T> vector<T> MaxHeap<T>::getTree()
 
 template<class T> void MaxHeap<T>::max_Heapify(int i)
 {
+    int max = i;
     int l = left(i);
     int r = right(i);
-
-    int max = i;
 
     if(l < getHeapSize() && getTree().at(max) < getTree().at(l) )
         max = l;
@@ -113,7 +112,7 @@ template<class T> void MaxHeap<T>::insert(T nodo)
 template<class T> void MaxHeap<T>::printArray()
 {
     cout<<endl << "**Albero***" << endl;
-    for (int i = 0; i <getHeapSize()-1; i++)
+    for (int i = 0; i <getHeapSize(); i++)
         cout<<getTree().at(i)<<" ";
 
     cout<<endl<<endl;

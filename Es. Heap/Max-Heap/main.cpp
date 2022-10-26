@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-    vector<int> tree(5);
+    vector<int> tree;
 
     MaxHeap<int> maxTree = MaxHeap<int>(tree);
 
