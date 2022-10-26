@@ -10,8 +10,9 @@ using namespace std;
 
 int main()
 {
-    //vector<int> tree{60, 50, 30, 10, 20};
-    vector<int> tree{10, 20, 50, 60, 30};
+    vector<int> tree{60, 50, 30, 10, 20};
+    //vector<int> tree{10, 20, 50, 60, 30};
+    //vector<int> tree{11, 1, 11, 60, 30};
     IsHeap<int> Tree;
 
     Tree.printIsHeap(tree, tree.size(), 0);
