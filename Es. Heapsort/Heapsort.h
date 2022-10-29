@@ -1,12 +1,12 @@
-#ifndef MAXHEAP_H
-#define MAXHEAP_H
+#ifndef HEAPSORT_H
+#define HEAPSORT_
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
 template<class T>
-class MaxHeap
+class Heapsort
 {
 private:
     vector<T> tree;
@@ -24,35 +24,33 @@ private:
     int getHeapSize();
     vector<T> getTree();
 public:
-    MaxHeap(vector<T>);
-
-    void insert(T);
+    Heapsort(vector<T>);
+    void heapSort();
     void printArray();
-    //void printAsciiTree();
 };
 
-template<class T> MaxHeap<T>::MaxHeap(vector<T> t)
+template<class T> Heapsort<T>::Heapsort(vector<T> t)
 {
     tree = t;
     heapsize = 0;
 }
 
-template<class T> int MaxHeap<T>::parent(int i)
+template<class T> int Heapsort<T>::parent(int i)
 {
     return (i-1)/2;
 }
 
-template<class T> int MaxHeap<T>::left(int i)
+template<class T> int Heapsort<T>::left(int i)
 {
     return (2*i) + 1 ;
 }
 
-template<class T> int MaxHeap<T>::right(int i)
+template<class T> int Heapsort<T>::right(int i)
 {
     return (2*i) + 2;
 }
 
-template<class T> void MaxHeap<T>::swap(T &A, T &B)
+template<class T> void Heapsort<T>::swap(T &A, T &B)
 {
     T temp;
     temp = A;
@@ -60,22 +58,22 @@ template<class T> void MaxHeap<T>::swap(T &A, T &B)
     B = temp;
 }
 
-template<class T> void MaxHeap<T>::setHeapSize(int hpsz)
+template<class T> void Heapsort<T>::setHeapSize(int hpsz)
 {
     heapsize = hpsz;
 }
 
-template<class T> int MaxHeap<T>::getHeapSize()
+template<class T> int Heapsort<T>::getHeapSize()
 {
     return heapsize;
 }
 
-template<class T> vector<T> MaxHeap<T>::getTree()
+template<class T> vector<T> Heapsort<T>::getTree()
 {
     return tree;
 }
 
-template<class T> void MaxHeap<T>::max_Heapify(int i)
+template<class T> void Heapsort<T>::max_Heapify(int i)
 {
     int max = i;
     int l = left(i);
@@ -94,7 +92,7 @@ template<class T> void MaxHeap<T>::max_Heapify(int i)
     }
 }
 
-template<class T> void MaxHeap<T>::build_Max_Heapify()
+template<class T> void Heapsort<T>::build_Max_Heapify()
 {
     setHeapSize((int)getTree().size());
     for(int j = (getHeapSize()/2); j >= 0; j--)
@@ -102,19 +100,30 @@ template<class T> void MaxHeap<T>::build_Max_Heapify()
     
 }
 
-template<class T> void MaxHeap<T>::insert(T nodo)
+
+template<class T> void Heapsort<T>::heapSort()
 {
-    setHeapSize(getHeapSize() + 1);
-    tree.push_back(nodo);
     build_Max_Heapify();
+
+    for(int j = getHeapSize()-1; j >= 0; j--)
+    {
+        swap(tree.at(0), tree.at(j));
+        setHeapSize(getHeapSize()- 1);
+        max_Heapify(0);
+    }
 }
 
-template<class T> void MaxHeap<T>::printArray()
+template<class T> void Heapsort<T>::printArray()
 {
     cout<<endl << "**Alberello***" << endl;
-    for (int i = 0; i <getHeapSize(); i++)
-        //cout<<getTree().at(i)<<" ";
+    for (int i = 0; i <tree.size(); i++)
         cout<<tree.at(i)<<" ";
+
     cout<<endl<<endl;
 }
+
+
+
+
+
 #endif

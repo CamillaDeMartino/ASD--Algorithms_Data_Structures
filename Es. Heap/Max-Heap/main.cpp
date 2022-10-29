@@ -14,15 +14,15 @@ using namespace std;
 
 int main()
 {
-    vector<int> tree;
+    vector<int> tree{10,30,50,60,20};
 
     MaxHeap<int> maxTree = MaxHeap<int>(tree);
 
-    maxTree.insert(10);
+    /*maxTree.insert(10);
     maxTree.insert(30);
     maxTree.insert(50);
     maxTree.insert(60);
-    maxTree.insert(20);
+    maxTree.insert(20);*/
 
     maxTree.printArray();
 
