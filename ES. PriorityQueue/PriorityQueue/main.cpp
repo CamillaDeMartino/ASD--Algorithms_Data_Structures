@@ -31,9 +31,11 @@ int main(){
     albero.printArray();
 
     cout<<"Massimo: "<<albero.extractMax()<<endl;
+    cout<<"Nuovo Albero"<<endl;
     albero.printArray();
-    
+
     albero.increaseKey(2, 120);
+    cout<<"Nuovo Albero"<<endl;
     albero.printArray();
 
     return 0;
