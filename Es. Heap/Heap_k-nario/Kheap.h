@@ -73,7 +73,7 @@ template<class T> void Kheap<T>::maxKHeapify(int i)
     int first = kChild * i + 1;
 
 
-    for(int j = first; j < last; j++)
+    for(int j = first; j <= last; j++)
     {
         if(j < getHeapSize() && getTree().at(max) < getTree().at(j))
             max = j; 
