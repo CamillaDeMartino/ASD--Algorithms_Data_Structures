@@ -17,30 +17,25 @@ using namespace std;
 
 int main(){
 
-  vector<int> tree{106, 105, 104, 103, 110, 109, 108, 107};
+  vector<int> tree{10, 3, 21};
 
-  MinPriorityQueue<int> albero = MinPriorityQueue<int>(tree);
+  MinPriorityQueue<int> albero = MinPriorityQueue<int>(tree, 3);
 
-
-  /*albero.minHeapInsert(106);
-  albero.minHeapInsert(105);
-  albero.minHeapInsert(104);
-  albero.minHeapInsert(103);
-  albero.minHeapInsert(110);
-  albero.minHeapInsert(109);
-  albero.minHeapInsert(108);
-  albero.minHeapInsert(107);*/
-
+  albero.buildMinHeap();
   albero.printArray();
+  cout<<"K-massimo: "<<albero.getMinimum()<<endl<<endl;
 
-  cout<<"Nuovo Albero"<<endl;
+  albero.minHeapInsert(1);
   albero.printArray();
+  cout<<"K-massimo: "<<albero.getMinimum()<<endl<<endl;
 
-  albero.decreaseKey(2, 100);
-  cout<<"Nuovo Albero"<<endl;
+  albero.minHeapInsert(45);
   albero.printArray();
+  cout<<"K-massimo: "<<albero.getMinimum()<<endl<<endl;
 
-
+  albero.minHeapInsert(50);
+  albero.printArray();
+  cout<<"K-massimo: "<<albero.getMinimum()<<endl<<endl;
 
   return 0;
 }

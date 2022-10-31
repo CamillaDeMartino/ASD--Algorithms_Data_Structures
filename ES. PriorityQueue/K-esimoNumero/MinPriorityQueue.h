@@ -12,7 +12,7 @@ class MinPriorityQueue:public MinHeap<T>
 private:
     /* data */
 public:
-    MinPriorityQueue(vector<T>);
+    MinPriorityQueue(vector<T>, int);
 
     void minHeapInsert(T);
     T getMinimum();
@@ -20,7 +20,7 @@ public:
     void decreaseKey(int, T);
 };
 
-template<class T> MinPriorityQueue<T>::MinPriorityQueue(vector<T> tree):MinHeap<T>(tree){
+template<class T> MinPriorityQueue<T>::MinPriorityQueue(vector<T> tree, int size):MinHeap<T>(tree, size){
 }
 
 template<class T> void MinPriorityQueue<T>::minHeapInsert(T nodo)
@@ -40,7 +40,7 @@ template<class T> T MinPriorityQueue<T>::extractMin()
     
     T min = getMinimum();
     swap(this->tree.at(0), this->tree.at(this->getHeapSize()-1));
-    this->setHeapSize(this->getHeapSize()-1);
+    this->heapSize = (this->getHeapSize()-1);
     this->minHeapify(0);
 
     return min;
