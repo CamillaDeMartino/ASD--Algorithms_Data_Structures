@@ -18,6 +18,7 @@ int main()
 
     MaxHeap<int> maxTree = MaxHeap<int>(tree);
 
+    maxTree.build_Max_Heapify();
     /*maxTree.insert(10);
     maxTree.insert(30);
     maxTree.insert(50);

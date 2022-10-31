@@ -18,7 +18,7 @@ private:
 
     void swap(T&, T&);
     void max_Heapify(int );
-    void build_Max_Heapify();
+    
     
     void setHeapSize(int);
     int getHeapSize();
@@ -26,9 +26,9 @@ private:
 public:
     MaxHeap(vector<T>);
 
+    void build_Max_Heapify();
     void insert(T);
     void printArray();
-    //void printAsciiTree();
 };
 
 template<class T> MaxHeap<T>::MaxHeap(vector<T> t)
@@ -95,10 +95,17 @@ template<class T> void MaxHeap<T>::max_Heapify(int i)
 }
 
 template<class T> void MaxHeap<T>::build_Max_Heapify()
-{
+{   
+    cout<<"ciao";
     setHeapSize((int)getTree().size());
     for(int j = (getHeapSize()/2); j >= 0; j--)
         max_Heapify(j);
+
+
+    /*tree.size()++;
+
+    for(int j = (tree.size()/2); j >= 0; j--)
+        max_Heapify(j);*/
     
 }
 
@@ -112,7 +119,7 @@ template<class T> void MaxHeap<T>::insert(T nodo)
 template<class T> void MaxHeap<T>::printArray()
 {
     cout<<endl << "**Alberello***" << endl;
-    for (int i = 0; i <getHeapSize(); i++)
+    for (int i = 0; i <tree.size(); i++)
         //cout<<getTree().at(i)<<" ";
         cout<<tree.at(i)<<" ";
     cout<<endl<<endl;
