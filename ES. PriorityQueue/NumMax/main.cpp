@@ -33,10 +33,10 @@ int main(){
   }
 
 
-  for(it =amap.begin(); it!=amap.end(); it++)
+  for(it = amap.begin(); it!=amap.end(); it++)
         cout << (*it).first << " => " << (*it).second << endl;
 
-  vector<int> a;
+  /*vector<int> a;
 
   for(it =amap.begin(); it!=amap.end(); it++)
         a.push_back((*it).second);
@@ -53,7 +53,7 @@ int main(){
 
     //tree.buildMaxHeap();
     tree.printArray(); 
-  }
+  }*/
 
 
   

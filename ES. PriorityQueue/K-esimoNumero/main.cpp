@@ -17,25 +17,37 @@ using namespace std;
 
 int main(){
 
-  vector<int> tree{10, 3, 21};
-
-  MinPriorityQueue<int> albero = MinPriorityQueue<int>(tree, 3);
-
-  albero.buildMinHeap();
+  vector<int> tree{10, 3, 21, 1, -1, 25, 8, 50};
+  MinPriorityQueue<int> albero = MinPriorityQueue<int>();
+  int k = 3;
+  
+  for(int i = 0; i < k; i++)
+  {
+    albero.minHeapInsert(tree.at(i));
+  }
   albero.printArray();
-  cout<<"K-massimo: "<<albero.getMinimum()<<endl<<endl;
 
-  albero.minHeapInsert(1);
-  albero.printArray();
-  cout<<"K-massimo: "<<albero.getMinimum()<<endl<<endl;
 
-  albero.minHeapInsert(45);
-  albero.printArray();
-  cout<<"K-massimo: "<<albero.getMinimum()<<endl<<endl;
+  for(int j = k; j < tree.size(); j++)
+  {
+    if(tree.at(j) > albero.getTree().at(0))
+    {
+      cout<<tree.at(j)<<" > "<<albero.getTree().at(0)<<endl;
+      cout<<"Elemento piu' grande, inserito!"<<endl;   
+      albero.minHeapInsert(tree.at(j));
+      albero.extractMin();
+ 
+    }
+    else
+    {
+      cout<<tree.at(j)<<" < "<<albero.getTree().at(0)<<endl;
+      cout<<"Elemento piu' piccolo, non inserito!"<<endl;
+    }
 
-  albero.minHeapInsert(50);
-  albero.printArray();
-  cout<<"K-massimo: "<<albero.getMinimum()<<endl<<endl;
+    cout<<k<<"-elemento piu' grande: "<<albero.getMinimum()<<endl;
+    albero.printArray(); 
+  }
+  
 
   return 0;
 }

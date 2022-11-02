@@ -16,28 +16,35 @@ private:
 protected:
     int heapSize;
     vector<T> tree;
+
     int parent(int);
-    
     void swap(T&, T&);
-    int getHeapSize();
-    vector<T> getTree();
+    
 
     void insert(T);
     void minHeapify(int);
 
 public:
-    MinHeap(vector<T>, int);
+    MinHeap(vector<T>);
+    MinHeap();
 
+    vector<T> getTree();
+    int getHeapSize();
     void buildMinHeap();
     void printArray();
  
 };
 
 
-template<class T> MinHeap<T>::MinHeap(vector<T> t, int hpsz)
+template<class T> MinHeap<T>::MinHeap(vector<T> t)
 {
     tree = t;
-    heapSize = hpsz;
+    heapSize = 0;
+}
+
+template<class T>MinHeap<T>::MinHeap()
+{
+    heapSize = 0;
 }
 
 template<class T> void MinHeap<T>::swap(T &A, T &B)
@@ -101,26 +108,25 @@ template<class T> void MinHeap<T>::buildMinHeap()
 }
 
 template<class T> void MinHeap<T>::insert(T nodo)
-{
-    cout<<"Inserito: "<<nodo<<endl;
-    if (nodo > getTree().at(0))
+{   
+    tree.push_back(nodo);
+    heapSize = getHeapSize() + 1;
+   
+    int i = getHeapSize()-1;
+
+    while(i > 0 && getTree().at(parent(i)) > nodo)
     {
-        cout<<nodo<<" > "<<getTree().at(0)<<endl;
-        tree.at(0) = nodo;
-        buildMinHeap();
+        swap(tree.at(i), tree.at(parent(i)));
+        i = parent(i);
     }
-    else 
-    {
-        cout<<"Elemento inserito piu' piccolo della radice"<<endl;
-    } 
 
 }
 
 template<class T> void MinHeap<T>::printArray()
 {
     cout<<endl << "**Alberello***" << endl;
-    for (int i = 0; i < tree.size(); i++) 
-        cout << tree.at(i) <<" ";
+    for (int i = 0; i < getHeapSize(); i++) 
+        cout << getTree().at(i) <<" ";
     cout<<endl<<endl;
 }
 
