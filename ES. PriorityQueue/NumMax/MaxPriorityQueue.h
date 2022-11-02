@@ -12,7 +12,7 @@ class MaxPriorityQueue:public MaxHeap<T>
 private:
    
 public:
-    MaxPriorityQueue(vector<T>);
+    MaxPriorityQueue();
 
     void maxHeapInsert(T);
     T getMaximum();
@@ -20,7 +20,7 @@ public:
     void decreaseKey(int, T);
 };
 
-template<class T> MaxPriorityQueue<T>::MaxPriorityQueue(vector<T> tree):MaxHeap<T>(tree){
+template<class T> MaxPriorityQueue<T>::MaxPriorityQueue():MaxHeap<T>(){
 }
 
 template<class T> void MaxPriorityQueue<T>::maxHeapInsert(T nodo)

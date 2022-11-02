@@ -29,6 +29,7 @@ protected:
 
 public:
     MaxHeap(vector<T>);
+    MaxHeap();
     void buildMaxHeap();
     void printArray();
  
@@ -38,6 +39,11 @@ public:
 template<class T> MaxHeap<T>::MaxHeap(vector<T> t)
 {
     tree = t;
+    heapSize = 0;
+}
+
+template<class T> MaxHeap<T>::MaxHeap()
+{
     heapSize = 0;
 }
 
