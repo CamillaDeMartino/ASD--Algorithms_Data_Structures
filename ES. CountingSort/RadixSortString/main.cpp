@@ -17,15 +17,11 @@ int main(){
         "ccaa",
         "ddaa" };
 
-    //RadixSortString::printArray(A, sizeof(A));
-    //radixSort(A, sizeof(A), 4);
-
     int size = sizeof(A) / sizeof(A[0]);
+
+    RadixSortString::printArray(A, size);
     RadixSortString::radixSortString(A, size, 4);
+    RadixSortString::printArray(A, size);
     
-    for (int i = 0; i < size; i++) {
-        cout << A[i] <<endl;
-    }
-    cout<<endl;
     return 0;
 }
