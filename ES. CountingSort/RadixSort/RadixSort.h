@@ -5,21 +5,20 @@
 
 using namespace std;
 
-template<class T>
 class RadixSort
 {
 private:
-    static T getMax(vector<T> *);
-    static void countingRadix(vector<T> *, int);     //variante del counting sort
+    static int getMax(vector<int> *);
+    static void countingRadix(vector<int> *, int);     //variante del counting sort
 public:
-    static void radixSort(vector<T> *);
-    static void printArr(vector<T>);
+    static void radixSort(vector<int> *);
+    static void printArr(vector<int>);
     
 };
 
-template<class T> T RadixSort<T>::getMax(vector<T> *A)
+int RadixSort::getMax(vector<int> *A)
 {
-    T max = A->at(0);
+    int max = A->at(0);
     for(int i = 1; i < A->size(); i++)
     {
         if(A->at(i) > max)
@@ -33,11 +32,11 @@ template<class T> T RadixSort<T>::getMax(vector<T> *A)
 //procede come il counting sort, ma non prendiamo l'intero numero ma prima la cifra meno significativa
 //fino a quella più significativa
 //la cifra da considerare sarà data da div(divisore) passato da main
-template<class T> void RadixSort<T>::countingRadix(vector<T> *A, int div)
+void RadixSort::countingRadix(vector<int> *A, int div)
 {
     int sizeA = A->size();
-    T *output = new T[sizeA];    //array di output
-    T count[10] = {0};           //array delle occorrenze
+    int *output = new int[sizeA];    //array di output
+    int count[10] = {0};           //array delle occorrenze
     
 
     //salviamo le occorrenze delle singole cifre in count
@@ -63,9 +62,9 @@ template<class T> void RadixSort<T>::countingRadix(vector<T> *A, int div)
 }
 
 
-template<class T> void RadixSort<T>::radixSort(vector<T> *A)
+void RadixSort::radixSort(vector<int> *A)
 {
-    T max = getMax(A);                         //es. A = 170 45 75 90 802 24 2 66    
+    int max = getMax(A);                         //es. A = 170 45 75 90 802 24 2 66    
                                                 //max = 802
 
     for(int div = 1; max/div > 0; div *= 10)    //div = 1;  802/1 => 802 > 0 V
@@ -74,7 +73,7 @@ template<class T> void RadixSort<T>::radixSort(vector<T> *A)
                                                 //div = 1000 802/1000 => 0. > 0 X
 }
 
-template<class T> void RadixSort<T>::printArr(vector<T> A)
+void RadixSort::printArr(vector<int> A)
 {
     cout<<endl;
 

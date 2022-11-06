@@ -9,9 +9,9 @@ int main(){
 
     vector<int> A = {170, 45, 75, 90, 802, 24, 2, 66};
 
-    RadixSort<int>::printArr(A);
-    RadixSort<int>::radixSort(&A);
-    RadixSort<int>::printArr(A);
+    RadixSort::printArr(A);
+    RadixSort::radixSort(&A);
+    RadixSort::printArr(A);
 
 
     return 0;
