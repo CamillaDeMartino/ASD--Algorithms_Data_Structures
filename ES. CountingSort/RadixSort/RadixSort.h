@@ -68,7 +68,7 @@ void RadixSort::radixSort(vector<int> *A)
                                                 //max = 802
 
     for(int div = 1; max/div > 0; div *= 10)    //div = 1;  802/1 => 802 > 0 V
-        countingRadix(A,div);                  //div = 10; 802/10 => 80 > 0 V
+        countingRadix(A,div);                   //div = 10; 802/10 => 80 > 0 V
                                                 //div = 100 802/100 => 8 > 0 V
                                                 //div = 1000 802/1000 => 0. > 0 X
 }

@@ -10,6 +10,7 @@ class CountingSortString
 {
 private:
     static int getMax(vector<string>);
+    static bool isSubString(vector<string> *);
 public:
     static void countingSortString(vector<string> *);
     static void printArr(vector<string>);
@@ -57,9 +58,26 @@ void CountingSortString::countingSortString(vector<string> *A)
         count.at(A->at(i).length())--;
     }
 
-    for(int i = 0; i < sizeA; i++)
-        A->at(i) = output.at(i);
+    if(isSubString(A))
+    {
+        for(int i = 0; i < sizeA; i++)
+            A->at(i) = output.at(i);
+    }
+    else
+        cout<<"No sottostringa"<<endl;
+}
 
+bool CountingSortString::isSubString(vector<string> *A)
+{
+    
+    for(int i = 0; i < A->size()-1; i++)
+    {
+        auto it = A->at(i+1).find(A->at(i));
+        if(it == string::npos)
+            return false;
+    }
+
+    return true;
 }
 
 void CountingSortString::printArr(vector<string> A)
