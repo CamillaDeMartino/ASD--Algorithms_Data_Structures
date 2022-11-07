@@ -18,9 +18,9 @@ public:
 
 int CountingSortString::getMax(vector<string> A)
 {
-    int max = A.at(0).length();
+    int max = A.at(0).length();         //il massimo non è l'elemento iniziale, ma la lunghezza della prima stringa
 
-    for(int i = 0; i < A.size(); i++)
+    for(int i = 1; i < A.size(); i++)
     {
         if(A.at(i).length() > max)
             max = A.at(i).length();
