@@ -27,11 +27,11 @@ Nodo::Nodo(Impiegato *i)
     next = nullptr;
 }
 
-/*Nodo::~Nodo()
+Nodo::~Nodo()
 {
     delete info;
     delete next;
-}*/
+}
 
 void Nodo::setInfo(Impiegato *i)
 {
