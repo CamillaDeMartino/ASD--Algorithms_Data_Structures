@@ -1,7 +1,6 @@
 #ifndef BINARYSEARCHTREE_H
 #define BINARYSEARCHTREE_H
 #include "Nodo.h"
-#define vuoto 5
 #include <iostream>
 
 using namespace std;
@@ -19,8 +18,7 @@ public:
     void insert(T);
 
     void preorderVisit(Nodo<T> *);
-    void printAsciiTree();
-    void inOrderAscii(Nodo<T>* root, int spazio);
+    void inorderVisit(Nodo<T> *);
 };
 
 template<class T> BinarySearchTree<T>::BinarySearchTree()
@@ -52,9 +50,19 @@ template<class T> void BinarySearchTree<T>::insert(T value)
     if(parent == nullptr)
         root = nodeToInsert;
     else if(nodeToInsert->getInfo() < parent->getInfo())
+    {
         parent->setLeft(nodeToInsert);
+        //cout<<"Nodo: "<<nodeToInsert->getInfo()<<endl;
+        //cout<<"Padre: "<<parent->getInfo()<<endl;
+        //cout<<"scendo a sx"<<endl;
+    }
     else
-        parent->setRight(nodeToInsert);
+        {
+            parent->setRight(nodeToInsert);
+            //cout<<"Nodo: "<<nodeToInsert->getInfo()<<endl;
+            //cout<<"Padre: "<<parent->getInfo()<<endl;
+            //cout<<"scendo a dx"<<endl;
+        }
 }
 
 template<class T> void BinarySearchTree<T>::preorderVisit(Nodo<T> *current)
@@ -68,28 +76,17 @@ template<class T> void BinarySearchTree<T>::preorderVisit(Nodo<T> *current)
 
 }
 
-template <typename T>
-void BinarySearchTree<T>::printAsciiTree(){
-    cout << endl << "***Min Ascii Heap***" << endl;
-    inOrderAscii(root,0);
+template<class T> void BinarySearchTree<T>::inorderVisit(Nodo<T> *current)
+{
+    if(current != nullptr)
+    {
+        preorderVisit(current->getLeft());
+        cout<<current->getInfo()<<" ";
+        preorderVisit(current->getRight());
+    }
+
 }
 
-template <typename T>
-void BinarySearchTree<T>::inOrderAscii(Nodo<T>* root, int spazio){
 
-    if (root == nullptr)
-        return;
-
-    spazio += vuoto;
-
-    inOrderAscii(root->getRight(),spazio);
-
-    cout << endl;
-    for (int i = vuoto; i < spazio; i++)
-        cout << " ";
-    cout << root->getInfo() << endl;
-
-    inOrderAscii(root->getLeft(),spazio);
-}
 
 #endif
