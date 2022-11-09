@@ -29,6 +29,7 @@ int main(){
     ABR.insert(15);
     */
     
+    /*
     ABR.insert(13);
     ABR.insert(12);
     ABR.insert(16);
@@ -36,6 +37,15 @@ int main(){
     ABR.insert(11);
     ABR.insert(14);
     ABR.insert(17);
+    */
+
+    ABR.insertRic(13, nullptr, ABR.getRoot());
+    ABR.insertRic(12, nullptr, ABR.getRoot());
+    ABR.insertRic(16, nullptr, ABR.getRoot());
+    ABR.insertRic(10, nullptr, ABR.getRoot());
+    ABR.insertRic(11, nullptr, ABR.getRoot());
+    ABR.insertRic(14, nullptr, ABR.getRoot());
+    ABR.insertRic(17, nullptr, ABR.getRoot());
 
     cout<<"PREORDER: ";
     ABR.preorderVisit(ABR.getRoot());
