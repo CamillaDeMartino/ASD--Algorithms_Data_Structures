@@ -65,22 +65,9 @@ template<class T> void BinarySearchTree<T>::insert(T value)
     if(parent == nullptr)
         root = nodeToInsert;
     else if(nodeToInsert->getInfo() < parent->getInfo())
-    {
         parent->setLeft(nodeToInsert);
-        //cout<<"Nodo: "<<nodeToInsert->getInfo()<<endl;
-        //cout<<"Padre: "<<parent->getInfo()<<endl;
-        //cout<<"scendo a sx"<<endl;
-    }
     else
-        {
-            parent->setRight(nodeToInsert);
-            //cout<<"Nodo: "<<nodeToInsert->getInfo()<<endl;
-            //cout<<"Padre: "<<parent->getInfo()<<endl;
-            //cout<<"scendo a dx"<<endl;
-        }
-        
-
-       
+        parent->setRight(nodeToInsert);    
 }
 
 //versione ricorsiva dell'inserimento
@@ -151,10 +138,14 @@ template<class T> Nodo<T> *BinarySearchTree<T>::successor(Nodo<T> *x)
 
 template<class T> Nodo<T> *BinarySearchTree<T>::findSuccessor(Nodo<T> *x)
 {
+    if(x == nullptr)
+        return nullptr;
+
     Nodo<T> *y = x->getParent();
+
     if(y == nullptr)
         return nullptr;
-    if(x == y->getLeft())
+    else if(x == y->getLeft())
         return y;
     else 
         return findSuccessor(y);
@@ -170,10 +161,14 @@ template<class T> Nodo<T> *BinarySearchTree<T>::predecessor(Nodo<T> *x)
 
 template<class T> Nodo<T> *BinarySearchTree<T>::findPredecessor(Nodo<T> *x)
 {
+    if(x == nullptr)
+        return nullptr;
+        
     Nodo<T> *y = x->getParent();
+    
     if(y == nullptr)
         return nullptr;
-    if(x == y->getRight())
+    else if(x == y->getRight())
         return y;
     else 
         return findPredecessor(y);
