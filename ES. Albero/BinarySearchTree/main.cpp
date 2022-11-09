@@ -1,11 +1,11 @@
 /* • Progettare una classe BinarySearchTree che implementi un
      albero binario di ricerca con le seguenti funzioni
+        • INSERT
         • SEARCH
         • MINIMUM
         • MAXIMUM
         • PREDECESSOR
         • SUCCESSOR
-        • INSERT
         • DELETE
 */
 
@@ -51,8 +51,15 @@ int main(){
     ABR.preorderVisit(ABR.getRoot());
     cout<<endl<<"INORDER: ";
     ABR.inorderVisit(ABR.getRoot());
-    
 
+    cout<<endl<<endl<<"Elemento minimo: "<<ABR.minimumTree(ABR.getRoot())->getInfo()<<endl;
+    cout<<endl<<"Elemento massimo: "<<ABR.maximumTree(ABR.getRoot())->getInfo()<<endl;
+    
+    auto *x = ABR.treeSearch(ABR.getRoot(), 12);
+    cout<<endl<<"Il successore di: "<< x->getInfo()<<" e': "<<ABR.successor(x)->getInfo();
+    cout<<endl<<"Il Predecessore di: "<< x->getInfo()<<" e': "<<ABR.predecessor(x)->getInfo();
+    
 
     return 0;
 }
+ 

@@ -19,7 +19,17 @@ public:
     void insert(T);
     void insertRic(T, Nodo<T>*, Nodo<T>*);
     void insertNode(T, Nodo<T>*, Nodo<T>*);
+
     Nodo<T> *treeSearch(Nodo<T> *, T);
+    bool isEmpty(){return root == nullptr;}
+
+    Nodo<T> *minimumTree(Nodo<T> *);
+    Nodo<T> *maximumTree(Nodo<T> *);
+
+    Nodo<T> *successor(Nodo<T> *);
+    Nodo<T> *findSuccessor(Nodo<T> *);
+    Nodo<T> *predecessor(Nodo<T> *);
+    Nodo<T> *findPredecessor(Nodo<T> *);
 
     void preorderVisit(Nodo<T> *);
     void inorderVisit(Nodo<T> *);
@@ -101,8 +111,73 @@ template<class T> void BinarySearchTree<T>::insertNode(T value, Nodo<T> *prev, N
 }
 
 
+template<class T> Nodo<T> *BinarySearchTree<T>::treeSearch(Nodo<T> *x, T key)
+{
+    if(x == nullptr || key == x->getInfo())
+        return x;
+    if(key < x->getInfo())
+        return treeSearch(x->getLeft(), key);
+    else
+        return treeSearch(x->getRight(), key);
+}
 
+template<class T> Nodo<T> *BinarySearchTree<T>::minimumTree(Nodo<T> *x)
+{
+    if(isEmpty())
+        return nullptr;
+    else if(x->getLeft() == nullptr)
+        return x;
+    else 
+        return minimumTree(x->getLeft());
+}
 
+template<class T> Nodo<T> *BinarySearchTree<T>::maximumTree(Nodo<T> *x)
+{
+    if(isEmpty())
+        return nullptr;
+    else if(x->getRight() == nullptr)
+        return x;
+    else 
+        return maximumTree(x->getRight());
+}
+
+template<class T> Nodo<T> *BinarySearchTree<T>::successor(Nodo<T> *x)
+{
+    if(x->getRight() != nullptr)
+        return minimumTree(x->getRight());
+    else 
+        return findSuccessor(x);
+}
+
+template<class T> Nodo<T> *BinarySearchTree<T>::findSuccessor(Nodo<T> *x)
+{
+    Nodo<T> *y = x->getParent();
+    if(y == nullptr)
+        return nullptr;
+    if(x == y->getLeft())
+        return y;
+    else 
+        return findSuccessor(y);
+}
+
+template<class T> Nodo<T> *BinarySearchTree<T>::predecessor(Nodo<T> *x)
+{
+    if(x->getLeft() != nullptr)
+        return maximumTree(x->getLeft());
+    else 
+        return findPredecessor(x);
+}
+
+template<class T> Nodo<T> *BinarySearchTree<T>::findPredecessor(Nodo<T> *x)
+{
+    Nodo<T> *y = x->getParent();
+    if(y == nullptr)
+        return nullptr;
+    if(x == y->getRight())
+        return y;
+    else 
+        return findPredecessor(y);
+}
 
 template<class T> void BinarySearchTree<T>::preorderVisit(Nodo<T> *current)
 {
