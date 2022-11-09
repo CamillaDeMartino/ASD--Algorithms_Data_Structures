@@ -179,7 +179,7 @@ template<class T> Nodo<T> *BinarySearchTree<T>::findPredecessor(Nodo<T> *x)
 
 template<class T> void BinarySearchTree<T>::treeDelete(Nodo<T> *x)
 {
-    if(x == nullptr)
+    if(x  == nullptr)
         x = nullptr;
     if(x->getLeft() == nullptr)
     {
