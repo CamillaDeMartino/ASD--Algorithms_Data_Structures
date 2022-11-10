@@ -50,27 +50,7 @@ template<class T> BinarySearchTree<T>::BinarySearchTree()
 
 template<class T> void BinarySearchTree<T>::insert(T value)
 {
-    Nodo<T> *nodeToInsert = new Nodo<T>(value);
-    Nodo<T> *parent = nullptr;                   
-    Nodo<T> *current = root;
-
-    while( current != nullptr)
-    {
-        parent = current;
-        if(nodeToInsert->getInfo() < current->getInfo())
-            current = current->getLeft();
-        else 
-            current = current->getRight();        
-    }
-
-    //nodo inseguitore
-    nodeToInsert->setParent(parent);
-    if(parent == nullptr)
-        root = nodeToInsert;
-    else if(nodeToInsert->getInfo() < parent->getInfo())
-        parent->setLeft(nodeToInsert);
-    else
-        parent->setRight(nodeToInsert);    
+    insertRic(value, nullptr, root);    
 }
 
 //versione ricorsiva dell'inserimento
