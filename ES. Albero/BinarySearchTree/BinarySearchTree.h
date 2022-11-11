@@ -58,7 +58,7 @@ template<class T> void BinarySearchTree<T>::insertRic(T value, Nodo<T> *prev, No
 {
     if(root == nullptr)
         root = new Nodo<T>(value);
-    if(curr == nullptr)
+    else if(curr == nullptr)
         insertNode(value, prev, curr);
     else if(curr->getInfo() > value)
         insertRic(value, curr, curr->getLeft());
@@ -72,12 +72,10 @@ template<class T> void BinarySearchTree<T>::insertNode(T value, Nodo<T> *prev, N
     curr = new Nodo<T>(value);
     curr->setParent(prev);
 
-    if(prev == nullptr)
-        root = curr;
-    else if(curr->getInfo() > prev->getInfo())
-            prev->setRight(curr);
-        else
-            prev->setLeft(curr);
+    if(curr->getInfo() > prev->getInfo())
+        prev->setRight(curr);
+    else
+        prev->setLeft(curr);
 }
 
 
@@ -169,7 +167,7 @@ template<class T> void BinarySearchTree<T>::treeDelete(Nodo<T> *x)
     else if(x->getRight() == nullptr)
     {
         transplant(x, x->getLeft());
-        //treeDelete(x);
+        
     }
     else
     {
@@ -217,9 +215,9 @@ template<class T> void BinarySearchTree<T>::inorderVisit(Nodo<T> *current)
 {
     if(current != nullptr)
     {
-        preorderVisit(current->getLeft());
+        inorderVisit(current->getLeft());
         cout<<current->getInfo()<<" ";
-        preorderVisit(current->getRight());
+        inorderVisit(current->getRight());
     }
 
 }

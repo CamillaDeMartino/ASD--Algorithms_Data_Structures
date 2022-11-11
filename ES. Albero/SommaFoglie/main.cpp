@@ -11,12 +11,13 @@ using namespace std;
 
 template<class T>
 T sumLeavs(Nodo<T> *x)
-{
+{   if(x == nullptr)
+        return 0;
     if(x->getLeft() == nullptr || x->getRight() == nullptr)
         return x->getInfo();
     else
         return sumLeavs(x->getLeft()) + sumLeavs(x->getRight());
-}
+};
 
 int main(){
 
