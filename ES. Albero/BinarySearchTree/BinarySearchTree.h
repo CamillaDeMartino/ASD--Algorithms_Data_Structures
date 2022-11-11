@@ -10,6 +10,17 @@ class BinarySearchTree
 {
 private:
     Nodo<T> *root;
+
+    void insertRic(T, Nodo<T>*, Nodo<T>*);
+    void insertNode(T, Nodo<T>*, Nodo<T>*);
+
+    void transplant(Nodo<T> *, Nodo<T> *);
+    
+    bool isEmpty(){return root == nullptr;}
+
+    Nodo<T> *findSuccessor(Nodo<T> *);
+    Nodo<T> *findPredecessor(Nodo<T> *);
+
 public:
     BinarySearchTree();
     //~BinarySearchTree();
@@ -17,22 +28,15 @@ public:
     Nodo<T> *getRoot(){return root;}
 
     void insert(T);
-    void insertRic(T, Nodo<T>*, Nodo<T>*);
-    void insertNode(T, Nodo<T>*, Nodo<T>*);
-
+    
     Nodo<T> *treeSearch(Nodo<T> *, T);
-    bool isEmpty(){return root == nullptr;}
-
     Nodo<T> *minimumTree(Nodo<T> *);
     Nodo<T> *maximumTree(Nodo<T> *);
 
     Nodo<T> *successor(Nodo<T> *);
-    Nodo<T> *findSuccessor(Nodo<T> *);
     Nodo<T> *predecessor(Nodo<T> *);
-    Nodo<T> *findPredecessor(Nodo<T> *);
 
     void treeDelete(Nodo<T> *);
-    void transplant(Nodo<T> *, Nodo<T> *);
 
     void preorderVisit(Nodo<T> *);
     void inorderVisit(Nodo<T> *);
@@ -160,15 +164,9 @@ template<class T> void BinarySearchTree<T>::treeDelete(Nodo<T> *x)
     if(x  == nullptr)
         x = nullptr;
     if(x->getLeft() == nullptr)
-    {
         transplant(x, x->getRight());
-        //treeDelete(x);
-    }
     else if(x->getRight() == nullptr)
-    {
         transplant(x, x->getLeft());
-        
-    }
     else
     {
         Nodo<T> *y = successor(x);
@@ -177,12 +175,10 @@ template<class T> void BinarySearchTree<T>::treeDelete(Nodo<T> *x)
             transplant(y, y->getRight());
             y->setRight(x->getRight());
             (y->getRight())->setParent(y);
-            //treeDelete(x);
         }
         transplant(x,y);
         y->setLeft(x->getLeft());
         (y->getLeft())->setParent(y);
-        //treeDelete(x);
     }
     
 }
