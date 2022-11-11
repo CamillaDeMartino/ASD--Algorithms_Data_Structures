@@ -38,7 +38,7 @@ int main(){
     cout<<endl<<"INORDER: ";
     ABR.inorderVisit(ABR.getRoot());
 
-    auto *x = ABR.treeSearch(ABR.getRoot(), 11);
+    auto *x = ABR.treeSearch(ABR.getRoot(), 11); //k=11
     cout<<endl;
     cout<<endl<<"Il successore dispari di "<<x->getInfo()<<" e' "<<shotsSuccessor(ABR,x)<<endl;
     cout<<endl;
