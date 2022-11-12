@@ -53,13 +53,14 @@ template<class T> BinarySearchTree<T>::BinarySearchTree()
 }*/
 
 template<class T> void BinarySearchTree<T>::insert(T value)
-{
+{    
     insertRic(value, nullptr, root);    
 }
 
 //versione ricorsiva dell'inserimento
 template<class T> void BinarySearchTree<T>::insertRic(T value, Nodo<T> *prev, Nodo<T> *curr)
 {
+    
     if(root == nullptr)
         root = new Nodo<T>(value);
     else if(curr == nullptr)
