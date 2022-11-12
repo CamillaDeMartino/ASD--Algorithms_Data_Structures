@@ -13,16 +13,15 @@ class MinPriorityQueue
 private:
     BinarySearchTree<T> ABR;
 public:
-    MinPriorityQueue();
+   
     void insert(T);
     T getMinimum();
     void extractMin();
-    void decreaseKey(int, T);
+    void decreaseKey(T, T);
     void print();
 };
 
-template<class T> MinPriorityQueue<T>::MinPriorityQueue(){
-}
+
 
 template<class T> void MinPriorityQueue<T>::insert(T nodo)
 {
@@ -48,7 +47,7 @@ template<class T> void MinPriorityQueue<T>::extractMin()
     
 } 
 
-template<class T> void MinPriorityQueue<T>::decreaseKey(int i, T key)
+template<class T> void MinPriorityQueue<T>::decreaseKey(T i, T key)     //i = vecchio nodo,  k = nuovo valore del nodo
 {
     auto *curr = ABR.treeSearch(ABR.getRoot(), i);
     if(key > curr->getInfo() || curr == nullptr)

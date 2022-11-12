@@ -10,7 +10,7 @@ using namespace std;
 
 int main(){
 
-    MinPriorityQueue<int> albero = MinPriorityQueue<int>();
+    MinPriorityQueue<int> albero;
     albero.insert(10);
     albero.insert(13);
     albero.insert(14);
