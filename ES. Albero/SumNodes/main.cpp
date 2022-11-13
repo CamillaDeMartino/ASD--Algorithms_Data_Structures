@@ -27,14 +27,17 @@ T  minCouple(vector<T> array)
 {
 
     T diff = abs(array.at(0) - array.at(1));
-
+    int ind = 0;
     for(int i = 1; i < array.size() - 1; i++)
     {
-       if(abs(array.at(i) - array.at(i+1)) < diff)
-            return i;
+        if(abs(array.at(i) - array.at(i+1)) <= diff)
+        {
+            diff  = abs(array.at(i) - array.at(i+1));
+            ind = i;
+        }
     }
 
-    return 0;
+    return ind;
 }
 
 
@@ -67,6 +70,7 @@ int main(){
     ABR.insert(14);
     ABR.insert(18);
 
+
     cout<<endl<<"INORDER: ";
     ABR.inorderVisit(ABR.getRoot());
     cout<<endl;
@@ -75,16 +79,18 @@ int main(){
     vector<int> arr;
     arrayVisit(ABR.getRoot(), &arr);
 
+
     cout<<endl<<"Vector: ";
     for(auto i:arr)
         cout<<i<<" ";
     cout<<endl;
 
     int figlio = minCouple(arr);
-
-    //cout<<endl<<"I nodi minimi sono: "<<arr.at(figlio)<<" e "<<arr.at(figlio+1)<<endl;
+    cout<<endl<<"VERSIONE ITERATIVA: ";
+    cout<<endl<<"I nodi minimi sono: "<<arr.at(figlio)<<" e "<<arr.at(figlio+1)<<endl;
     
     int ind = minCoupleRic(arr, 0, UINT16_MAX, 0);
+    cout<<endl<<"VERSIONE RICORSIVA: ";
     cout<<endl<<"I nodi minimi sono: "<<arr.at(ind)<<" e "<<arr.at(ind+1)<<endl;
     
     return 0;
