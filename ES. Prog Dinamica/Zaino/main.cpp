@@ -60,7 +60,7 @@ int main(){
     {
         for(j = 1; j <= W; j++)
         {
-            if(w[i] > j)                                                                    //se il peso dell'oggeto è più grande della capacità j
+            if(w[i] > j)                                                                   //se il peso dell'oggeto è più grande della capacità j
             {
                 matrix[i][j].setValue(matrix[i-1][j].getValue());                          //prendi l'elemento sopra(in testa)
                 for(int k = 1; k < v.size(); k++)
@@ -68,7 +68,7 @@ int main(){
                     matrix[i][j].setMapValue(k, matrix[i-1][j].getMapValue(k) );
                 }
             }
-            else if(matrix[i-1][j].getValue() > matrix[i-1][j - w[i]].getValue() + v[i])    //peso più piccolo o uguale alla capacità 
+            else if(matrix[i-1][j].getValue() > matrix[i-1][j - w[i]].getValue() + v[i])    //peso più piccolo o uguale alla capacità, cerco il massimo
             {
                 matrix[i][j].setValue(matrix[i-1][j].getValue());                           //scarto l'elemento 
 
