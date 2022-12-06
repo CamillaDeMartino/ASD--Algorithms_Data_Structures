@@ -60,17 +60,17 @@ int main(){
     {
         for(j = 1; j <= W; j++)
         {
-            if(w[i] > j)                                                                    //entra nel sacco
+            if(w[i] > j)                                                                    //se il peso dell'oggeto è più grande della capacità j
             {
-                matrix[i][j].setValue(matrix[i-1][j].getValue());
+                matrix[i][j].setValue(matrix[i-1][j].getValue());                          //prendi l'elemento sopra(in testa)
                 for(int k = 1; k < v.size(); k++)
                 {
                     matrix[i][j].setMapValue(k, matrix[i-1][j].getMapValue(k) );
                 }
             }
-            else if(matrix[i-1][j].getValue() > matrix[i-1][j - w[i]].getValue() + v[i])    //peso troppo grande
+            else if(matrix[i-1][j].getValue() > matrix[i-1][j - w[i]].getValue() + v[i])    //peso più piccolo o uguale alla capacità 
             {
-                matrix[i][j].setValue(matrix[i-1][j].getValue());
+                matrix[i][j].setValue(matrix[i-1][j].getValue());                           //scarto l'elemento 
 
                 for(int k = 1; k < v.size(); k++)
                 {
@@ -85,7 +85,7 @@ int main(){
                 {
                     matrix[i][j].setMapValue(k, matrix[i-1][j - w[i]].getMapValue(k));
                 }
-                matrix[i][j].setMapValue(i, 1); //voglio prendere l'elemento
+                matrix[i][j].setMapValue(i, 1);                                             //voglio prendere l'elemento
             }
         }
     }
