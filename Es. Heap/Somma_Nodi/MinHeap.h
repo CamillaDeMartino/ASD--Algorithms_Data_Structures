@@ -108,6 +108,7 @@ template<class T> void MinHeap<T>::insert(T nodo)
     setHeapSize(getHeapSize() + 1);
     tree.push_back(nodo);
     build_Min_Heap();
+    
 }
 
 template<class T> void MinHeap<T>::printArray()
