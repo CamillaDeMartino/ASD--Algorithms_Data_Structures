@@ -26,6 +26,7 @@ int main(){
     albero.minHeapInsert(tree.at(i));
   }
   albero.printArray();
+  cout<<k<<"-elemento piu' grande: "<<albero.getMinimum()<<endl<<endl;
 
 
   for(int j = k; j < tree.size(); j++)
