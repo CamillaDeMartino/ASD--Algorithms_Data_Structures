@@ -95,7 +95,7 @@ template<class T> void Heapsort<T>::max_Heapify(int i)
 template<class T> void Heapsort<T>::build_Max_Heapify()
 {
     setHeapSize((int)getTree().size());
-    for(int j = (getHeapSize()/2); j >= 0; j--)
+    for(int j = (getHeapSize()/2)-1; j >= 0; j--)
         max_Heapify(j);
     
 }
@@ -111,6 +111,7 @@ template<class T> void Heapsort<T>::heapSort()
         setHeapSize(getHeapSize()- 1);
         max_Heapify(0);
     }
+
 }
 
 template<class T> void Heapsort<T>::printArray()

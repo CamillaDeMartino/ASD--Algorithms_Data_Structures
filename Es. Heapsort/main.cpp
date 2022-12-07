@@ -15,6 +15,7 @@ int main(){
     t.printArray();
     
     t.heapSort();
+    cout<<"Albero ordinato";
     t.printArray();
     return 0;
 }

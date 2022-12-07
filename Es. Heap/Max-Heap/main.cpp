@@ -26,6 +26,7 @@ int main()
     maxTree.insert(20);*/
 
     maxTree.printArray();
+    
 
     return 0;
 }
