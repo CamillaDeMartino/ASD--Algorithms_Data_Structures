@@ -106,7 +106,7 @@ template<class T> void MaxHeap<T>::buildMaxHeap()
 {
     setHeapSize((int) getTree().size());
 
-    for(int j = (getHeapSize()/2); j >= 0; j--)
+    for(int j = (getHeapSize()/2) -1 ; j >= 0; j--)
         maxHeapify(j);
         
 }
