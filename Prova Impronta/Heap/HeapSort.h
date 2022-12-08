@@ -8,19 +8,22 @@ class HeapSort
 {
 private:
     int heapsize;
-    vector<T> tree;
 
-    int parent(int i){return (i-1)/2;}
     int left(int i){return (i*2)+1;}
     int right(int i){return (i*2)+2;}
 
+    void buildMaxHeap();
+
+protected:
+    vector<T> tree;
+    int parent(int i){return (i-1)/2;}
+
+    vector<T> getTree(){return tree;}
     void setHeapsize(int hpsz){heapsize = hpsz;}
     int getHeapsize(){return heapsize;}
-    vector<T> getTree(){return tree;}
-
     void swap(T&, T&);
     void maxHeapify(int);
-    void buildMaxHeap();
+    
 
 public:
     HeapSort(vector<T>);
@@ -102,8 +105,12 @@ template<class T> void HeapSort<T>::heapSort()
 
 template<class T> void HeapSort<T>::printArray()
 {
-    for(int i = 0; i < tree.size(); i++)
+    /*
+        for(int i = 0; i < tree.size(); i++)
        cout<<tree.at(i)<<" ";
-    
+    */
+
+    for(auto i:tree)
+        cout<<i<<" ";
     cout<<endl;
 }
