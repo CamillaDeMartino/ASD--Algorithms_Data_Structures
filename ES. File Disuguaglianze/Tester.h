@@ -130,11 +130,3 @@ size_t sze;
 
 
 
-
-main(){
-    string p ="problema.txt";
-    string s ="soluzione.txt";
-    string e ="esito.txt";
-    Tester tester(p,s,e);
-    tester.check();
-}
