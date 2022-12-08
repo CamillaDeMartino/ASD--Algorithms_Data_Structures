@@ -99,7 +99,7 @@ template<class T> void MinHeap<T>::min_Heapify(int i)
 template<class T> void MinHeap<T>::build_Min_Heap()
 {
     setHeapSize((int)getTree().size());
-    for(int j = (getHeapSize()/2); j >= 0; j--)
+    for(int j = (getHeapSize()/2)-1; j >= 0; j--)
         min_Heapify(j);
 }
 
