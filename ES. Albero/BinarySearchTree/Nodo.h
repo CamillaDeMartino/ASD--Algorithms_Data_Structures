@@ -17,9 +17,9 @@ public:
     Nodo(T);
     ~Nodo();
 
-    void setParent(Nodo *);
-    void setLeft(Nodo *);
-    void setRight(Nodo *);
+    void setParent(Nodo<T> *);
+    void setLeft(Nodo<T> *);
+    void setRight(Nodo<T> *);
     void setInfo(T);
 
     Nodo<T> *getParent(){return parent;}
@@ -45,17 +45,17 @@ template <class T> Nodo<T>::~Nodo()
     delete right;
 }
 
-template <class T> void Nodo<T>::setParent(Nodo *p)
+template <class T> void Nodo<T>::setParent(Nodo<T> *p)
 {
     parent = p;
 }
 
-template <class T> void Nodo<T>::setLeft(Nodo *l)
+template <class T> void Nodo<T>::setLeft(Nodo<T> *l)
 {
     left = l;
 }
 
-template <class T> void Nodo <T>::setRight(Nodo *r)
+template <class T> void Nodo <T>::setRight(Nodo<T> *r)
 {   
     right = r;
 }
