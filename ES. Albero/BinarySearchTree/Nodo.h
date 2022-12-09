@@ -8,9 +8,9 @@ template<class T>
 class Nodo
 {
 private:
-    Nodo *parent;
-    Nodo *left;
-    Nodo *right;
+    Nodo<T> *parent;
+    Nodo<T> *left;
+    Nodo<T> *right;
 
     T data;
 public:
@@ -22,9 +22,9 @@ public:
     void setRight(Nodo *);
     void setInfo(T);
 
-    Nodo *getParent(){return parent;}
-    Nodo *getLeft(){return left;}
-    Nodo *getRight(){return right;}
+    Nodo<T> *getParent(){return parent;}
+    Nodo<T> *getLeft(){return left;}
+    Nodo<T> *getRight(){return right;}
     T getInfo(){return data;}
 };
 
@@ -45,12 +45,12 @@ template <class T> Nodo<T>::~Nodo()
     delete right;
 }
 
-template <class T> void Nodo <T>::setParent(Nodo *p)
+template <class T> void Nodo<T>::setParent(Nodo *p)
 {
     parent = p;
 }
 
-template <class T> void Nodo <T>::setLeft(Nodo *l)
+template <class T> void Nodo<T>::setLeft(Nodo *l)
 {
     left = l;
 }
