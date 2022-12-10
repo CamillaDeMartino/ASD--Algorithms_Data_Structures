@@ -70,7 +70,7 @@ template<class T> Nodo<T> *BinaryTree<T>::treeSearch(Nodo<T> *x, T key)
 {
     if(x == nullptr || key == x->getInfo())
         return x;
-    if(key < x->getInfo())
+    else if(key < x->getInfo())
         return treeSearch(x->getLeft(), key);
     else 
         return treeSearch(x->getRight(), key);
@@ -80,7 +80,7 @@ template<class T> Nodo<T> *BinaryTree<T>::getMinimum(Nodo<T> *x)
 {
     if(root == nullptr)
         return nullptr;
-    if(x->getLeft() == nullptr)
+    else if(x->getLeft() == nullptr)
         return x;
     else
         return getMinimum(x->getLeft());
@@ -90,7 +90,7 @@ template<class T> Nodo<T> *BinaryTree<T>::getMaximum(Nodo<T> *x)
 {
     if(root == nullptr)
         return nullptr;
-    if(x->getRight() == nullptr)
+    else if(x->getRight() == nullptr)
         return x;
     else 
         return getMaximum(x->getRight());
@@ -100,7 +100,7 @@ template<class T> Nodo<T> *BinaryTree<T>::successor(Nodo<T> *x)
 {
     if(x == nullptr)
         return nullptr;
-    if(x->getRight() != nullptr)
+    else if(x->getRight() != nullptr)
         return getMinimum(x->getRight());
     else
         return findSuccessor(x);
@@ -115,7 +115,7 @@ template<class T> Nodo<T> *BinaryTree<T>::findSuccessor(Nodo<T> *x)
 
     if(y == nullptr)
         return nullptr;
-    if(x == y->getLeft())
+    else if(x == y->getLeft())
         return y;
     else
         return findSuccessor(y);
@@ -126,7 +126,7 @@ template<class T> Nodo<T> *BinaryTree<T>::predecessor(Nodo<T> *x)
 {
     if(x == nullptr)
         return nullptr;
-    if(x->getLeft() != nullptr)
+    else if(x->getLeft() != nullptr)
         return getMaximum(x->getLeft());
     else 
         return findPredecessor(x);
@@ -140,7 +140,7 @@ template<class T> Nodo<T> *BinaryTree<T>::findPredecessor(Nodo<T> *x)
     Nodo<T> *y = x->getParent();
     if(y == nullptr)
         return nullptr;
-    if(x = y->getRight())
+    else if(x = y->getRight())
         return y;
     else 
         return findPredecessor(y);
@@ -155,4 +155,10 @@ template<class T> void BinaryTree<T>::visitInorder(Nodo<T> *x)
         visitInorder(x->getRight());
     }
 }
+
+
+
+
+
+
 #endif
