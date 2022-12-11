@@ -7,15 +7,14 @@ int main(){
 
     BinaryTree<int> ABR;
 
-    ABR.insert(13);
+    ABR.insert(11);
     ABR.insert(12);
     ABR.insert(16);
     ABR.insert(10);
-    ABR.insert(11);
+    ABR.insert(13);
     ABR.insert(14);
     ABR.insert(17);
 
-    cout<<endl<<"RADICE: "<<ABR.getRoot()->getInfo()<<endl;
     cout<<"ABR: ";
     ABR.visitInorder(ABR.getRoot());
 
