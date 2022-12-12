@@ -105,10 +105,6 @@ int main(){
         tree2.visitPostorder(tree2.getRoot());
     }
     
-    
-
-    
-
 
     return 0;
 }
