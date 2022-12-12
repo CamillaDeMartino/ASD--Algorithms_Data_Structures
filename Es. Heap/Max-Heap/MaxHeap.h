@@ -34,7 +34,8 @@ public:
 template<class T> MaxHeap<T>::MaxHeap(vector<T> t)
 {
     tree = t;
-    heapsize = 0;
+    heapsize = t.size();
+    build_Max_Heapify();
 }
 
 template<class T> int MaxHeap<T>::parent(int i)

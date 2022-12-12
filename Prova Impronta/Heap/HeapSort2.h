@@ -39,7 +39,7 @@ class HeapSort2
 template<class T> HeapSort2<T>::HeapSort2(vector<T> t)
 {
     tree = t;
-    heapsize = 0;
+    heapsize = t.size();
 }
 
 template<class T> HeapSort2<T>::HeapSort2()

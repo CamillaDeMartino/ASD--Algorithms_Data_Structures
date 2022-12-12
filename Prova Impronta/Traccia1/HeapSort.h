@@ -36,7 +36,8 @@ public:
 template<class T> HeapSort<T>::HeapSort(vector<T> t)
 {
     tree = t;
-    heapsize = 0;
+    heapsize = t.size();
+    buildMaxHeap();
 }
 
 template<class T> HeapSort<T>::HeapSort()

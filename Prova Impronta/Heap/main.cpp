@@ -6,12 +6,15 @@
 using namespace std;
 int main(){
 
-    vector<int> tree = {30, 25, 20, 3, 2, 4};
+    vector<int> tree = {25, 30, 20, 3, 2, 4};
 
     HeapSort<int> t = HeapSort<int>(tree);
+    cout<<"Alberello: "<<endl;
+    t.printArray();
+
     t.heapSort();
     cout<<"Alberello ordinato "<<endl;
-    //t.printArray();
+    t.printArray();
 
     cout<<endl<<"Max Heap"<<endl;
     //HeapSort<int> t2 = HeapSort<int>();
