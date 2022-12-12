@@ -40,8 +40,7 @@ int Massimo(int x, int y)
 
 int Altezza(Nodo<int> *x)
 {
-    int l, r, max;
-
+   
     if(x == nullptr)
         return 0;
     else
@@ -49,8 +48,6 @@ int Altezza(Nodo<int> *x)
 
         
 }
-
-
 
 
 int main(){
