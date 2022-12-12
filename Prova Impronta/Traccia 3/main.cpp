@@ -6,3 +6,31 @@
       Utilizzare la classe minQ per trovare il massimo numero di elementi distinti dopo aver rimosso k elementi(k<=n)
 
 */
+
+#include "MinPriorityQueue.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main(){
+
+    MinPriorityQueue<int> Heap;
+    string file = "priorita.txt";
+    string num;
+    fstream myfile;
+
+    myfile.open(file.c_str(), ios::in);
+    while(getline(myfile, num))
+       Heap.insertHeap(stof(num));
+
+
+    cout<<"***MINHEAP***"<<endl;
+    //Heap.printArray();
+
+    myfile.close();
+
+
+    return 0;
+}
