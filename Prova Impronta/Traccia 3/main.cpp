@@ -15,6 +15,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
+#include <map>
 
 using namespace std;
 
@@ -25,13 +27,40 @@ int main(){
     string num;
     fstream myfile;
 
+    vector<int> vect;
+    map<int,int> amap;
+    map<int, int>::iterator it;
+    vector<int>::iterator jt;
+
     myfile.open(file.c_str(), ios::in);
     while(getline(myfile, num))
-        heap->insertHeap(stof(num));
+        vect.push_back(stof(num));
 
+
+    for(int i = 0; i < vect.size(); i++)
+    {
+        int elem = vect.at(i);
+        it = amap.find(elem);
+
+        if(it == amap.end())
+            amap.insert(make_pair(elem, 1));
+        else
+            amap.at(elem)++;
+    }   
+
+    for (it = amap.begin(); it != amap.end(); it++)
+    {
+        cout<<"Numero: "<<(*it).first<<" =>> Occorrenza: "<<(*it).second<<endl;
+        heap->insertHeap((*it).second);
+    }
 
     cout<<"***MINHEAP***"<<endl;
     heap->print();
+    
+
+
+
+    
 
     myfile.close();
 
