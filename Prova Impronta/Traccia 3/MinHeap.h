@@ -1,37 +1,40 @@
 #ifndef MINHEAP_H
 #define MINHEAP_H
+#include "Heap.h"
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
 template<class T>
-class MinHeap
+class MinHeap:public Heap<T>
 {
 private:
     int heapSize;
-    vector<T> tree;
-
-    int parent(int i){return (i-1)/2;}
-    int left(int i){return (i*2)+1;}
-    int right(int i){return (i*2)+2;}
-
-    void swap(T&, T&);
-    void minHeapify(int);
-    void buildMinHeap();
-
-private:
     
+
+    int left(int i)override{return (i*2)+1;}
+    int right(int i)override{return (i*2)+2;}
+
+    
+    void buildHeap()override;
+
+protected:
+    vector<T> tree;
     vector<T> getTree(){return tree;}
+    int parent(int i)override{return (i-1)/2;}
+
+    void swap(T&, T&)override;
     void setHeapSize(int heapSize){this->heapSize = heapSize;}
     int getHeapSize(){return heapSize;}
-
+    void Heapify(int)override;
+    void insert(T)override;
 
 public:
     MinHeap(vector<T>);
     MinHeap();
 
-    void insert(T);
+    
     void printArray();
 };
 
@@ -39,7 +42,7 @@ template<class T> MinHeap<T>::MinHeap(vector<T> tree)
 {
     heapSize = tree.size();
     this->tree = tree;
-    buildMinHeap();
+    buildHeap();
 }
 
 template<class T> MinHeap<T>::MinHeap()
@@ -54,7 +57,7 @@ template<class T> void MinHeap<T>::swap(T &A, T &B)
     B = temp;
 }
 
-template<class T> void MinHeap<T>::minHeapify(int i)
+template<class T> void MinHeap<T>::Heapify(int i)
 {
     int min = i;
     int l = left(i);
@@ -68,7 +71,7 @@ template<class T> void MinHeap<T>::minHeapify(int i)
     if(min != i)
     {
         swap(tree.at(min), tree.at(i));
-        minHeapify(min);
+        Heapify(min);
     }
 }
 
@@ -85,17 +88,17 @@ template<class T> void MinHeap<T>::insert(T value)
     }
 }
 
-template<class T> void MinHeap<T>::buildMinHeap()
+template<class T> void MinHeap<T>::buildHeap()
 {
     setHeapSize((int) tree.size());
     for(int i = getHeapSize()/2-1; i >= 0; i--)
-        minHeapify(i);
+        Heapify(i);
 }
 
 template<class T> void MinHeap<T>::printArray()
 {
-    for(auto i:tree)
-        cout<<i<<" ";
+    for(int i = 0; i < tree.size(); i++)
+        cout<<tree.at(i)<<" ";
     cout<<endl;
 }
 

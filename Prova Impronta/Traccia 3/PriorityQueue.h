@@ -7,26 +7,18 @@ using namespace std;
 template<class T>
 class PriorityQueue
 {
-private:
+protected:
     
-public:
-    PriorityQueue();
-    virtual ~PriorityQueue();
+    virtual void insertHeap(T) = 0;
+    virtual T getRoot() = 0;
+    virtual T extractRoot() = 0;
+    virtual void changePriority(int , T) = 0;
 
-    virtual void insertHeap(T);
-    //virtual T getMinimum();
-    //virtual T getMaximum();
-    //virtual T extractMin();
-    //virtual T extractMax();
-    //virtual void increaseKey(int , T);
-    //virtual void decreseKey(int , T);
-
+    //virtual PriorityQueue() = 0;
+    //virtual ~PriorityQueue() = 0;
     //virtual void printQueue();   
 };
 
-template<class T> PriorityQueue<T>::PriorityQueue()
-{
-}
 
 
 

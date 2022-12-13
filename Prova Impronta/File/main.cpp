@@ -34,21 +34,13 @@ int main(){
     cout<<endl<<"***FILE CON 2 NUMERI PER RIGA***"<<endl;
     string file3 = "myFile2";
     fstream myFile2;
-    int numc;
-    int num;
+    char num;
     myFile2.open(file3.c_str(), ios::in);
     
-    
-    myFile2.seekg(0);
-    while(true){
-        for(int i = 0; i < 2; i++)
-            myFile2>>num;
-        
-        if(myFile2.eof())
-            break;
-
-        cout<<"Valore: "<<num<<endl;
-        //while(myFile2.get() != '\n');
+    while(!myFile2.eof())
+    {
+        myFile2.get(num);
+        cout<<num;
     }
 
 

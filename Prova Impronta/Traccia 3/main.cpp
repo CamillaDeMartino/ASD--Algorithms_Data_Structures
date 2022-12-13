@@ -5,6 +5,10 @@
       La struttura dati verrà popolata leggendo il contenuto del file priorita.txt.
       Utilizzare la classe minQ per trovare il massimo numero di elementi distinti dopo aver rimosso k elementi(k<=n)
 
+      • Es.: {5,4,4,3,4,6,2,1,2}, 
+                per k=2 maxnum= 6(5,4,3,6,2,1), 
+                per k=3 maxnum= 5(5,3,6,2,1)
+
 */
 
 #include "MinPriorityQueue.h"
@@ -16,18 +20,18 @@ using namespace std;
 
 int main(){
 
-    MinPriorityQueue<int> Heap;
+    MinPriorityQueue<int> *heap = new MinPriorityQueue<int>();
     string file = "priorita.txt";
     string num;
     fstream myfile;
 
     myfile.open(file.c_str(), ios::in);
     while(getline(myfile, num))
-       Heap.insertHeap(stof(num));
+        heap->insertHeap(stof(num));
 
 
     cout<<"***MINHEAP***"<<endl;
-    //Heap.printArray();
+    heap->print();
 
     myfile.close();
 
