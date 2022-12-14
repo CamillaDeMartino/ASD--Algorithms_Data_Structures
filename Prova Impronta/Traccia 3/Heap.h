@@ -18,9 +18,6 @@ protected:
     virtual void insert(T) = 0;
     virtual void buildHeap() = 0;
 
-public:
-    //virtual Heap(vector<T>);
-    //virtual Heap() = 0;
 };
 
 

@@ -45,7 +45,7 @@ template<class T> T MinPriorityQueue<T>::extractRoot()
         return 0;
     
     T min = this->getRoot();
-    int i = this->getHeapSize() - 1;
+    //int i = this->getHeapSize() - 1;
     this->tree.erase(this->tree.begin());
     this->setHeapSize(this->getHeapSize() -1 );
     this->Heapify(0);
