@@ -7,7 +7,7 @@
 using namespace std;
 
 template<class T>
-class MinHeap:public Heap<T>
+class MinHeap:private Heap<T>
 {
 private:
     int heapSize;

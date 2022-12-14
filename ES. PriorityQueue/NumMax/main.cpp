@@ -59,6 +59,7 @@ int main(){
 
     arr.erase(jt);
     tree.decreaseKey(0,tree.getMaximum()-1);
+    (*it).second--;
     
     cout<<endl;
     for ( int i=0; i<arr.size(); i++)

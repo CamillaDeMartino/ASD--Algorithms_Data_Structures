@@ -6,7 +6,7 @@
       Dato un array di n elementi, trovare il massimo numero di elementi distinti dopo aver rimosso k elementi (k<=n)
         • Es.: {5,4,4,3,4,6,2,1,2}, 
                 per k=2 maxnum= 6(5,4,3,6,2,1), 
-                per k=3 maxnum= 5(5,3,6,2,1)
+                per k=3 maxnum= 6(5,3,4,6,2,1)
 
 
 */
@@ -58,24 +58,28 @@ int main(){
 
   cout<<endl<<"HEAP"<<endl;
   heap->print();
+  cout<<endl<<"VETTORE"<<endl;
+  for(auto i:vect)
+    cout<<i<<" ";
+  cout<<endl;
 
-
-  int k = 2;
+  int k = 3;
   for(int i = 0; i < k; i++)
   {
     jt = amap.begin();
     it = vect.begin();
 
     while((*jt).second != heap->getRoot())
-        jt++;
-    
+        *jt++;
+
     while((*jt).first != *it)
-        it++;
+        *it++;
 
+  
     vect.erase(it);
+    (*jt).second--;
     heap->changePriority(0, heap->getRoot() - 1);
-
-    heap->print(); 
+    heap->print();
   }
   cout<<endl;
 
