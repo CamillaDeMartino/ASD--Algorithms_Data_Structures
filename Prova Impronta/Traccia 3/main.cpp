@@ -3,12 +3,13 @@
       priorità minQ che erediti da una classe virtuale coda di priorità Q, in modo che gli oggetti di classe minQ non possano accedere agli
       attributi ed ai metodi della classe Q.
       La struttura dati verrà popolata leggendo il contenuto del file priorita.txt.
-      Utilizzare la classe minQ per trovare il massimo numero di elementi distinti dopo aver rimosso k elementi(k<=n)
-
-      • Es.: {5,4,4,3,4,6,2,1,2}, 
-                per k=2 maxnum= 6(5,4,3,6,2,1), 
-                per k=3 maxnum= 5(5,3,6,2,1)
-
+       Data una sequenza di interi (rappresentata da un array), trovare il k-esimo elemento più grande per ogni i=0..N-1.
+        • seq=[10, 3, 21, 1, -1, 45, 8, 12, 78]
+        • k=2
+        • i=1 k-max=3
+        • i=2 k-max=10
+        • i=3 k-max=10
+        • ...
 */
 
 #include "MinPriorityQueue.h"
@@ -26,39 +27,43 @@ int main(){
     string file = "priorita.txt";
     string num;
     fstream myfile;
-
+    int k = 3;
     vector<int> vect;
-    map<int,int> amap;
-    map<int, int>::iterator it;
-    vector<int>::iterator jt;
 
     myfile.open(file.c_str(), ios::in);
     while(getline(myfile, num))
         vect.push_back(stof(num));
 
+    cout<<endl<<"**Vettore**"<<endl;
+    for(auto i:vect)
+        cout<<i<<" ";
+    cout<<endl;
 
-    for(int i = 0; i < vect.size(); i++)
-    {
-        int elem = vect.at(i);
-        it = amap.find(elem);
 
-        if(it == amap.end())
-            amap.insert(make_pair(elem, 1));
-        else
-            amap.at(elem)++;
-    }   
+    for(int i = 0; i < k ; i++)
+        heap->insertHeap(vect.at(i));
+    cout<<endl;
 
-    for (it = amap.begin(); it != amap.end(); it++)
-    {
-        cout<<"Numero: "<<(*it).first<<" =>> Occorrenza: "<<(*it).second<<endl;
-        heap->insertHeap((*it).second);
-    }
-
-    cout<<"***MINHEAP***"<<endl;
     heap->print();
+    cout<<k<<"-esimo massimo: "<<heap->getRoot()<<endl;
+          
     
-
-
+    for(int i = k ; i < vect.size(); i++)
+    {   cout<<endl;
+        if(vect.at(i) > heap->getRoot())
+        {
+            cout<<vect.at(i)<<" > "<<heap->getRoot()<<endl;
+            heap->insertHeap(vect.at(i));
+            heap->extractRoot();
+            heap->print();
+            cout<<k<<"-esimo massimo: "<<heap->getRoot()<<endl;
+        }
+        else
+        {
+            cout<<vect.at(i)<<" < "<<heap->getRoot()<<endl;
+            cout<<k<<"-esimo massimo: "<<heap->getRoot()<<endl;
+        }
+    }
 
     
 

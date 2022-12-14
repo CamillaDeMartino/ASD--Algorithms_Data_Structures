@@ -46,9 +46,7 @@ template<class T> T MinPriorityQueue<T>::extractRoot()
     
     T min = this->getRoot();
     int i = this->getHeapSize() - 1;
-    this->swap(this->tree.at(0), this->tree.at(i));
-    typename vector<T>::iterator it = this->getTree().end() -1;
-    this->getTree().erase(it);
+    this->tree.erase(this->tree.begin());
     this->setHeapSize(this->getHeapSize() -1 );
     this->Heapify(0);
 
