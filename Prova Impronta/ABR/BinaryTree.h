@@ -29,7 +29,7 @@ public:
     Nodo<T> *predecessor(Nodo<T> *);
 
     void visitInorder(Nodo<T> *);
-
+    void visitPreorder(Nodo<T> *);
     
 };
 
@@ -156,7 +156,15 @@ template<class T> void BinaryTree<T>::visitInorder(Nodo<T> *x)
     }
 }
 
-
+template<class T> void BinaryTree<T>::visitPreorder(Nodo<T> *x)
+{
+    if(x != nullptr)
+    {
+        cout<<x->getInfo()<<" ";
+        visitPreorder(x->getLeft());
+        visitPreorder(x->getRight());
+    }
+}
 
 
 

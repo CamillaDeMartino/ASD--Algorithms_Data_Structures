@@ -147,8 +147,9 @@ template<class T> void BinaryTree<T>::visitInorder(Nodo<T> *x)
 {
     if(x != nullptr)
     {
-        visitInorder(x->getLeft());
         cout<<x->getInfo()<<" ";
+        visitInorder(x->getLeft());
+        
         visitInorder(x->getRight());
     }
 }

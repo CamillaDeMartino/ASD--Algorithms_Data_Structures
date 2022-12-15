@@ -44,7 +44,7 @@ int main(){
     cout<<endl<<endl<<"Elemento minimo: "<<ABR.minimumTree(ABR.getRoot())->getInfo()<<endl;
     cout<<"Elemento massimo: "<<ABR.maximumTree(ABR.getRoot())->getInfo()<<endl;
     
-    auto *x = ABR.treeSearch(ABR.getRoot(), 12);
+    auto *x = ABR.treeSearch(ABR.getRoot(), 14);
     cout<<endl<<"Il successore di: "<< x->getInfo()<<" e': "<<ABR.successor(x)->getInfo();
     cout<<endl<<"Il Predecessore di: "<< x->getInfo()<<" e': "<<ABR.predecessor(x)->getInfo();
     

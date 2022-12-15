@@ -15,8 +15,10 @@ int main(){
     ABR.insert(14);
     ABR.insert(17);
 
-    cout<<"ABR: ";
+    cout<<"ABR INORDER: ";
     ABR.visitInorder(ABR.getRoot());
+    cout<<endl<<"ABR PREORDER: ";
+    ABR.visitPreorder(ABR.getRoot());
 
     cout<<endl<<endl<<"Minimo: "<<ABR.getMinimum(ABR.getRoot())->getInfo()<<endl;
     cout<<"Massimo: "<<ABR.getMaximum(ABR.getRoot())->getInfo()<<endl;
