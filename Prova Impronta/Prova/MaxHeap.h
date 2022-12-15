@@ -10,15 +10,21 @@ class MaxHeap
 {
 private:
     int heapSize;
-    vector<T> tree;
 
-    int parent(int i){return (i-1)/2;}
     int left(int i){return (i*2)+1;}
     int right(int i){return (i*2)+2;}
 
+    void buildMaxHeap();
+    
+
+protected:
+    vector<T> tree;
+    int parent(int i){return (i-1)/2;}
+    vector<T> getTree(){return tree;}
+    void insert(T);
+
     int getHeapSize(){return heapSize;}
     void setHeapSize(int heapSize){this->heapSize = heapSize;}
-    void buildMaxHeap();
     void heapify(int);
     void swap(T &, T &);
 
@@ -26,9 +32,9 @@ public:
     MaxHeap(vector<T>);
     MaxHeap();
 
-    vector<T> getTree(){return tree;}
-    void insert(T);
+    
     void print();
+    void heapSort();
 
 };
 
@@ -99,6 +105,16 @@ template<class T> void MaxHeap<T>::print()
     cout<<endl;    
 }
 
+template<class T> void MaxHeap<T>::heapSort()
+{
+    buildMaxHeap();
 
+    for(int i = getHeapSize()-1; i >= 0; i--)
+    {
+        swap(tree.at(0), tree.at(i));
+        setHeapSize(getHeapSize() - 1);
+        heapify(0);
+    }
+}
 
 #endif
