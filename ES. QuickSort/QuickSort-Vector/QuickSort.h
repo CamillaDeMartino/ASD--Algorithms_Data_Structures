@@ -33,7 +33,7 @@ typename vector<Item>::iterator QuickSort<Item>::partition(typename vector<Item>
     i = begin-1;
     j = end;
 
-     for(;;)
+    while(1)
     {
         while (*(++i) < pivot );
         while (pivot < *(--j))
@@ -54,7 +54,8 @@ template<class Item> void QuickSort<Item>::quickSort(typename vector<Item>::iter
 {
     if (end <= begin)
         return;
-    auto i = partition(begin,end);
+    
+    typename vector<Item>::iterator i = partition(begin,end);
 
     quickSort(begin,i-1);
     quickSort(i+1,end);
