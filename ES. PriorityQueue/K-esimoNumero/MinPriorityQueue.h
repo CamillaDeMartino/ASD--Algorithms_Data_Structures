@@ -17,6 +17,8 @@ public:
     T getMinimum();
     T extractMin();
     void decreaseKey(int, T);
+    void print(){MinHeap<T>::printArray();};
+
 };
 
 template<class T> MinPriorityQueue<T>::MinPriorityQueue():MinHeap<T>(){
@@ -35,7 +37,7 @@ template<class T> T MinPriorityQueue<T>::getMinimum()
 template<class T> T MinPriorityQueue<T>::extractMin()
 {
     if(this->getHeapSize() == 0)
-        return -1;
+        cout<<"error";
     
     T min = getMinimum();
     this->tree.erase(this->tree.begin());

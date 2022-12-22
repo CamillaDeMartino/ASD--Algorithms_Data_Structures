@@ -13,7 +13,7 @@ class Tester{
         fstream fsS;
         fstream fsE;
 
-        bool NumeriCorretti(string, string );
+        bool NumeriCorretti(string, string);
         bool SimboliCorretti(string, string);
         bool CheckLogica(string, string);
 

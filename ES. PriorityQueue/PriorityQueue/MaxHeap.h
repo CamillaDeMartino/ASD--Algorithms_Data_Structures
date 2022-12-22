@@ -8,8 +8,7 @@ using namespace std;
 template<class T>
 class MaxHeap
 {
-private:
-    
+private:  
     int heapSize;
 
     int left(int);
