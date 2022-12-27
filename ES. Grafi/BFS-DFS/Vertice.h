@@ -10,7 +10,7 @@
 using namespace std;
 
 enum class Color{
-    WHITE, GREY, BLACK
+    WHITE, GRAY, BLACK
 };
 
 
@@ -22,6 +22,10 @@ private:
     Color colore;
     Vertice<T> *predecessore;
     int distanza;
+
+    //ATTRIBUTI PER LA DFS
+    int tempInizio;
+    int tempFine;
 
 public:
     Vertice(T);
@@ -36,6 +40,13 @@ public:
     Vertice<T> *getPredecessor(){return predecessore;}
     int getDistanza(){return distanza;}
 
+
+    //DFS
+    void setTempInizio(int tempInizio){this->tempInizio = tempInizio;}
+    void setTemoFine(int tempFine){this->tempFine = tempFine;}
+    int getTempInizio(){return tempInizio;}
+    int getTempFine(){return tempFine;}
+
     friend ostream& operator<<(ostream& out, const Vertice<T>& obj)
     {
         string c;
@@ -44,8 +55,8 @@ public:
         case Color::WHITE:
             c = "WHITE";
             break;
-        case Color::GREY:
-            c = "GREY";
+        case Color::GRAY:
+            c = "GRAY";
             break;
         case Color::BLACK:
             c = "BLACK";
@@ -70,6 +81,10 @@ template<class T> Vertice<T>::Vertice(T value)
     colore = Color::WHITE;
     predecessore = nullptr;
     distanza = UINT16_MAX;
+
+    //DFS
+    tempInizio = 0;
+    tempFine = 0;
 }
 
 

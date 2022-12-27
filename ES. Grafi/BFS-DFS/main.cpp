@@ -45,7 +45,11 @@ int main(){
     grafo.addArco(2, &e);         // 4|E|--->|F|   |--->NULL
     grafo.addArco(4, &f);         // 5|F|--->NULL
 
-    grafo.BFS(&a);
+    //cout<<"BFS"<<endl;
+    //grafo.BFS(&a);
+
+    cout<<"DFS"<<endl;
+    grafo.DFS();
     cout << grafo << endl;
 
 

@@ -16,11 +16,18 @@ private:
     vector<Nodo<T>> grafo;
     list<Vertice<T>* > getListAdj(Vertice<T> *);
 
+    //tempo per la scoperta DFS
+    int time;
+
 public:
     
     void addNodo(Nodo<T> );
     void addArco(int, Vertice<T> *);
     void BFS(Vertice<T> *);
+
+    //DFS
+    void DFS();
+    void DFSVisit(Vertice<T> *);
 
     friend ostream &operator<<(ostream &out, GrafoOrientato<T> &obj)
     {
@@ -72,7 +79,7 @@ template<class T> void GrafoOrientato<T>::BFS(Vertice<T> *sorgente)
         u.getVertice()->setDistanza(UINT16_MAX);
     }
 
-    sorgente->setColor(Color::GREY);
+    sorgente->setColor(Color::GRAY);
     sorgente->setDistanza(0);
     sorgente->setPredecessore(nullptr);
     queue<Vertice<T>*> q;
@@ -92,7 +99,7 @@ template<class T> void GrafoOrientato<T>::BFS(Vertice<T> *sorgente)
         {
             if(v->getColor() == Color::WHITE)
             {
-                v->setColor(Color::GREY);
+                v->setColor(Color::GRAY);
                 v->setPredecessore(u);
                 v->setDistanza(u->getDistanza() + 1);
                 q.push(v);
@@ -102,6 +109,44 @@ template<class T> void GrafoOrientato<T>::BFS(Vertice<T> *sorgente)
     
     }
 
+}
+
+
+template<class T> void GrafoOrientato<T>::DFS()
+{
+    //inizializzazione
+    for(auto u : grafo)
+    {
+        u.getVertice()->setColor(Color::WHITE);
+        u.getVertice()->setPredecessore(nullptr);
+        time = 0;
+    }
+
+    //chiama la visiita per ogni nodo i cui adiacenti sono bianchi
+    for(auto u : grafo)
+    {
+        if(u.getVertice()->getColor() == Color::WHITE)
+            DFSVisit(u.getVertice());
+    }
+
+}
+
+template<class T> void GrafoOrientato<T>::DFSVisit(Vertice<T> *u)
+{
+    u->setColor(Color::GRAY);
+    u->setTempInizio(time++);
+
+    list<Vertice<T>*> adj = getListAdj(u);
+    for(auto v: adj)
+    {
+        if(v->getColor() == Color::WHITE)
+        {
+            v->setPredecessore(u);
+            DFSVisit(v);
+        }
+    }
+    u->setColor(Color::BLACK);
+    u->setTemoFine(time++);
 }
 
 #endif
