@@ -13,7 +13,6 @@ private:
     Vertice<T> *vertice;
     list<Vertice<T>*> listaAdiacenza;
 
-
 public:
     Nodo(Vertice<T> *vertice){
         this->vertice = vertice;

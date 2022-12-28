@@ -1,16 +1,12 @@
-//è il singlo valore del vertice ognuno con il suo predecessore, colore , valore e distanza
-//sono i vertici della lista di adiacenza di un nodo
-
 #ifndef VERTICE_H
 #define VERTICE_H
 #include <iostream>
-#include <limits>
-#include <string>
+#include <string> 
 
 using namespace std;
 
 enum class Color{
-    WHITE, GRAY, BLACK
+    BLACK, WHITE, GRAY
 };
 
 
@@ -19,11 +15,9 @@ class Vertice
 {
 private:
     T value;
+    Vertice<T> *predecessor;
     Color colore;
-    Vertice<T> *predecessore;
-    int distanza;
 
-    //ATTRIBUTI PER LA DFS
     int tempInizio;
     int tempFine;
 
@@ -31,24 +25,19 @@ public:
     Vertice(T);
 
     void setValue(T value){this->value = value;}
+    void setPredecessor(Vertice<T> *predecessor){this->predecessor = predecessor;}
     void setColor(Color colore){this->colore = colore;}
-    void setPredecessore(Vertice<T> *predecessore){this->predecessore = predecessore;}
-    void setDistanza(int distanza){this->distanza = distanza;}
+    void setTempInzio(int tempInizo){this->tempInizio = tempInizio;}
+    void setTempFine(int tempFine){this->tempFine = tempFine;}
 
     T getValue(){return value;}
+    Vertice<T> *getPredecessor(){return predecessor;}
     Color getColor(){return colore;}
-    Vertice<T> *getPredecessor(){return predecessore;}
-    int getDistanza(){return distanza;}
-
-
-    //DFS
-    void setTempInizio(int tempInizio){this->tempInizio = tempInizio;}
-    void setTempFine(int tempFine){this->tempFine = tempFine;}
-    int getTempInizio(){return tempInizio;}
+    int getTempInzio(){return tempInizio;}
     int getTempFine(){return tempFine;}
 
-    
-    friend ostream& operator<<(ostream& out, const Vertice<T>& obj)
+
+    friend ostream& operator<<(ostream& out, const Vertice<T> &obj)
     {
         string c;
         switch (obj.colore)
@@ -66,9 +55,10 @@ public:
             break;
         }
 
-        out<<"Valore: "<<obj.value<<" Colore: "<<c;
+        cout<<"Valore "<<obj.value<<" Colore: "<<c;
         return out;
     }
+
 
     friend bool operator== (const Vertice<T> &a, const Vertice<T> &b)
     {
@@ -80,10 +70,7 @@ template<class T> Vertice<T>::Vertice(T value)
 {
     this->value = value;
     colore = Color::WHITE;
-    predecessore = nullptr;
-    distanza = UINT16_MAX;
-
-    //DFS
+    predecessor = nullptr;
     tempInizio = 0;
     tempFine = 0;
 }
