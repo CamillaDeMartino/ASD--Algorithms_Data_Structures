@@ -3,6 +3,7 @@
 #include "GrafoOrientato.h"
 #include "Vertice.h"
 #include <string>
+#include <queue>
 
 using namespace std;
 
@@ -45,11 +46,15 @@ int main(){
     grafo.addArco(2, &e);         // 4|E|--->|F|   |--->NULL
     grafo.addArco(4, &f);         // 5|F|--->NULL
 
+    queue<Vertice<string>*> queue;
+    queue.push(&a);
     //cout<<"BFS"<<endl;
     //grafo.BFS(&a);
+    //grafo.BFSRecursive(queue); 
 
-    cout<<"DFS"<<endl;
-    grafo.DFS();
+    //cout<<"DFS"<<endl;
+    //grafo.DFS();
+    grafo.DFSIterative(&a);
     cout << grafo << endl;
 
 

@@ -6,6 +6,7 @@
 #include <queue>
 #include <list>
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -16,18 +17,20 @@ private:
     vector<Nodo<T>> grafo;
     list<Vertice<T>* > getListAdj(Vertice<T> *);
 
-    //tempo per la scoperta DFS
-    int time;
+    //DFS
+    int time;                   //tempo per la scoperta DFS
+    void DFSVisit(Vertice<T> *);
 
 public:
     
     void addNodo(Nodo<T> );
     void addArco(int, Vertice<T> *);
     void BFS(Vertice<T> *);
+    void BFSRecursive(queue<Vertice<T>*> );
 
     //DFS
     void DFS();
-    void DFSVisit(Vertice<T> *);
+    void DFSIterative(Vertice<T> *);
 
     friend ostream &operator<<(ostream &out, GrafoOrientato<T> &obj)
     {
@@ -69,6 +72,7 @@ template<class T> list<Vertice<T> *> GrafoOrientato<T>::getListAdj(Vertice<T> *v
     return grafo.at(0).getList();
 }
 
+
 template<class T> void GrafoOrientato<T>::BFS(Vertice<T> *sorgente)
 {
     //inizializzazione
@@ -83,6 +87,7 @@ template<class T> void GrafoOrientato<T>::BFS(Vertice<T> *sorgente)
     sorgente->setDistanza(0);
     sorgente->setPredecessore(nullptr);
     queue<Vertice<T>*> q;
+
     //inserimento nella coda FIFO
     q.push(sorgente);
 
@@ -111,6 +116,45 @@ template<class T> void GrafoOrientato<T>::BFS(Vertice<T> *sorgente)
 
 }
 
+template<class T> void GrafoOrientato<T>::BFSRecursive(queue<Vertice<T> *> queue)
+{
+    static bool isFirst = true;
+
+    if(isFirst)
+    {
+        for(auto u : grafo)
+        {
+            u.getVertice()->setColor(Color::WHITE);
+            u.getVertice()->setPredecessore(nullptr);
+            u.getVertice()->setDistanza(UINT16_MAX);
+        }
+
+        isFirst = false;
+    }
+
+    if(!queue.empty())
+    {
+        auto u = queue.front();
+        queue.pop();
+
+        list<Vertice<T>*> adj = getListAdj(u);
+
+        for(auto v : adj)
+        {
+            if(v->getColor() == Color::WHITE)
+            {
+                v->setColor(Color::GRAY);
+                v->setPredecessore(u);
+                v->setDistanza(u->getDistanza() + 1);
+                queue.push(v);
+            }
+        }
+        u->setColor(Color::BLACK);
+        BFSRecursive(queue);
+    }
+}
+
+
 
 template<class T> void GrafoOrientato<T>::DFS()
 {
@@ -131,6 +175,7 @@ template<class T> void GrafoOrientato<T>::DFS()
 
 }
 
+
 template<class T> void GrafoOrientato<T>::DFSVisit(Vertice<T> *u)
 {
     u->setColor(Color::GRAY);
@@ -146,7 +191,49 @@ template<class T> void GrafoOrientato<T>::DFSVisit(Vertice<T> *u)
         }
     }
     u->setColor(Color::BLACK);
-    u->setTemoFine(time++);
+    u->setTempFine(time++);
+}
+
+template<class T> void GrafoOrientato<T>::DFSIterative(Vertice<T> *sorgente)
+{
+    for(auto u : grafo)
+    {
+        u.getVertice()->setColor(Color::WHITE);
+        u.getVertice()->setPredecessore(nullptr);
+        time = 0;
+    }
+
+    //per implementare un dfs iterativa abbiamo bisogno di uno stack perché 
+    //il primo elemento che vine colorato di nero è l'ulitmo inserito
+    //necessitiamo dunque di una struttura LIFO tipica degli stack
+
+    stack<Vertice<T> *> stack;
+    stack.push(sorgente);
+
+    while (!stack.empty())
+    {
+        auto u = stack.top();
+        stack.pop();
+
+        //ci serve il vertice bianco
+        if(u->getColor() == Color::WHITE)
+        {
+            u->setColor(Color::GRAY);
+            u->setTempInizio(time++);
+        }
+            //se un nodo adiacente non è sttao ancora visitato inseriscilo nello stack
+            list<Vertice<T>*> adj = getListAdj(u);
+            for(auto v: adj)
+            {
+                if(v->getColor() == Color::WHITE)
+                    stack.push(v);
+            }
+
+            u->setColor(Color::BLACK);
+            u->setTempFine(time++);
+        
+    }
+
 }
 
 #endif

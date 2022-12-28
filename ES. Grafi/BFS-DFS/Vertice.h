@@ -43,7 +43,7 @@ public:
 
     //DFS
     void setTempInizio(int tempInizio){this->tempInizio = tempInizio;}
-    void setTemoFine(int tempFine){this->tempFine = tempFine;}
+    void setTempFine(int tempFine){this->tempFine = tempFine;}
     int getTempInizio(){return tempInizio;}
     int getTempFine(){return tempFine;}
 
