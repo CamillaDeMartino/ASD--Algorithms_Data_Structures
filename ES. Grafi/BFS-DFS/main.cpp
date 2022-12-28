@@ -1,3 +1,8 @@
+/*
+    • Implementare le visite BFS e DFS
+        – Iterative e ricorsive
+*/
+
 #include <iostream>
 #include "Nodo.h"
 #include "GrafoOrientato.h"
@@ -9,6 +14,7 @@ using namespace std;
 
 int main(){
 
+    //prova
     //Vertice<string> a("A");
     //Vertice<string> b("B");
     //Vertice<string> c("C");
