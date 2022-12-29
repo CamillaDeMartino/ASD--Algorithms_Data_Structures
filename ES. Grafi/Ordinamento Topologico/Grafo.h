@@ -17,7 +17,6 @@ private:
     list<Vertice<T>*> getList(Vertice<T> *);
     int time;
     void DFSVisit(Vertice<T> *);
-    bool isDAG();
 
     //è necessario per l'ordinamento topologico che il grafo sia una DAG ossia un grafo senza cicli
     //N.B i cicli si verificano quando tutti i nodi adiacenti sono grigi
@@ -89,6 +88,7 @@ template<class T> bool Grafo<T>::DFS()
 
 template<class T> void Grafo<T>::DFSVisit(Vertice<T> *u)
 {
+    
     u->setColor(Color::GRAY);
     u->setTempInzio(time++);
 
@@ -108,22 +108,13 @@ template<class T> void Grafo<T>::DFSVisit(Vertice<T> *u)
     L.push(u);
 }
 
-template<class T> bool Grafo<T>::isDAG()
-{
-    if(DFS())
-        return false;
-    else
-        return true;
-}
 
 template<class T> void Grafo<T>::ordinamentoTopologico()
 {
-    if(DFS())
+    if(!DFS())
     {
         cout<<endl<<"ORDINAMENTO TOPOLOGICO"<<endl;
-        while(!L.empty())
-            cout<<L.pop()<<" --> ";
-        cout<<"NULL"<<endl;
+        printOrdTop();
     }
     else
         cout<<"SONO PRESENTI CICLI"<<endl;
@@ -131,9 +122,14 @@ template<class T> void Grafo<T>::ordinamentoTopologico()
 
 template<class T> void Grafo<T>::printOrdTop()
 {
+    
     while(!L.empty())
-        cout<<L.pop()<<" --> ";
+    {
+        cout<<*L.top()<<" --> ";
+        L.pop();
+    }
     cout<<"NULL"<<endl;
+
 }
 
 

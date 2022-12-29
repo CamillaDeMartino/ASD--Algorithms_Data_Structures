@@ -26,7 +26,7 @@ int main(){
     grafo.addArco(1, &i);         
 
     grafo.ordinamentoTopologico();
-    cout<<grafo;
+    //cout<<grafo;
 
     return 0;
 }

@@ -19,6 +19,7 @@ public:
     
     void Push(T Elm);
     bool Pop(T &Elm);
+    T Pop();
     bool isEmpty();
 };
 
@@ -28,7 +29,9 @@ template <typename T> void Stack<T>::Push (T Elm)
     { 
         T *App;
         App = new T[Dim+10]; // trasloca lo stack
-        for (int i=0; i<Dim; i++) App[i] = Vet[i];
+        for (int i=0; i<Dim; i++) 
+            App[i] = Vet[i];
+        
         Dim += 10; 
         delete [] Vet; 
         Vet = App; // allunga lo stack
@@ -44,6 +47,13 @@ template <typename T> bool Stack<T>::Pop (T &Elm)
     else          Risp = false; // stack vuoto
     
     return Risp;
+}
+
+template <typename T> T Stack<T>::Pop()
+{
+    if(Top >= 0)
+        return Vet[Top--];
+    return Vet[0];
 }
 
 template <typename T> bool Stack<T>::isEmpty()
